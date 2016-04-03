@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	*{margin:0;padding:0;}
+	li{ list-style:none;}
+	ul{ width:200px; border:1px solid #000;display:none;}
+	li{height:36px; line-height:36px; text-align:center; background:#ccc; border-bottom:1px dashed #eee; }
+</style>
+<script>
+	window.onload = function(){
+		//获取元素
+		var oTxt = document.getElementById('txt');
+		var oS = document.getElementById('span1');
+		var oBtn = document.getElementById('btn');
+		var oUl = document.getElementById('ul1');
+		var aLi = oUl.getElementsByTagName('li');
+		oBtn.onclick = function(){
+			oUl.style.display = 'block';
+		};
+		
+		var arr= ['个月','年','个月','睡吧'];
+		for(var i = 0;i<aLi.length;i++){
+			aLi[i].index = i;
+			aLi[i].onclick = function(){
+				oTxt.value = parseInt(this.innerHTML);
+				oUl.style.display = 'none';
+				oS.innerHTML  = arr[this.index];
+				
+			};
+		}
+	};
+</script>
+</head>
+<body>
+	<input id="txt" type="text"><span id="span1">年</span>
+    <input type="button" value="显示" id="btn">
+    <ul id="ul1">
+    	<li>6个月</li>
+    	<li>1年</li>
+    	<li>18个月</li>
+        <li>不用还了</li>
+    </ul>
+</body>
+</html>

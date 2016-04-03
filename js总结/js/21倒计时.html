@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	span{color:red;}
+</style>
+<script>
+	window.onload = function(){
+		
+		function count(){
+			var oS = document.getElementById('span1');
+			//设置到将来的时间
+			var oTarget = new Date();
+			oTarget.setFullYear(2016,11,25);
+			oTarget.setHours(0,0,0,0);
+			//获取了2016 2 14日的毫秒数
+			var iTarget = oTarget.getTime();
+			//alert(iTarget);
+			
+			var oNow = new Date();
+			var iNow = oNow.getTime();
+			//从 现在到 情人节 秒数
+			var s = parseInt((iTarget - iNow)/1000);
+			//天
+			var d = parseInt(s/86400);
+			s%=86400;//s已经变了  出去整个天数部分 不够一天的 秒数 包含小时 分钟和秒
+			var H = parseInt(s/3600);
+			//小时数
+			s%=3600;//s已经变了  不够一小时的部分  包含分钟和秒数
+			var M = parseInt(s/60);
+			//分钟数
+			s= s%60;//不够一分钟的秒数
+			
+			oS.innerHTML = d+'天 '+H+'小时 '+M+'分钟 '+s+'秒';
+		}
+		count();
+		setInterval(count,1000);
+	};
+</script>
+</head>
+<body>
+	离2016年2月14日 还有<span id="span1">100天 15小时 32分钟 56秒</span>
+</body>
+</html>

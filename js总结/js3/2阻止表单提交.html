@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	window.onload = function(){
+		var oForm = document.getElementById('form1');
+		var oName = document.getElementsByName('user')[0];
+		var oAge = document.getElementsByName('age')[0];
+		oForm.onsubmit = function(){
+			if(oName.value==''||oAge.value == ''){
+				if(oName.value==''){
+					alert('请输入你的大名');
+				}else if(oAge.value == ''){
+					alert('请输入您的芳龄');
+				}
+				return false;	
+			}
+		};	
+	};
+</script>
+</head>
+<body>
+	<form action = "http://www.zhinengshe.com" id="form1">
+    	姓名：<input type="text" name="user"><br>
+        年龄：<input type="text" name="age"><br>
+        <input type="submit" value="提交">
+        
+    </form>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

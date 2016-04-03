@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn');
+		var timer = null;
+		oBtn.onclick = function(){
+			var t = 5;
+			oBtn.disabled = true;
+			clearInterval(timer);
+			timer = setInterval(tick,1000);
+			tick();
+			function tick(){
+				
+				t--;
+				oBtn.value = t+'秒后重新发送';	
+				if(t == 0){
+					oBtn.value = '重新发送';
+					oBtn.disabled = false;
+					clearInterval(timer);
+				}
+	
+			}
+		};
+	};
+</script>
+</head>
+<body>
+	<input type="button" value="发送验证码" id="btn">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

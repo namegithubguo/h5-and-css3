@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	#box{ float:left;}
+	.on{ background:red;}
+	#box div{ width:300px; height:300px; background:#ccc; display:none;}
+</style>
+<script>
+	window.onload = function(){
+		var oBox = document.getElementById('box');	
+		var aBtn = oBox.getElementsByTagName('input');
+		var oNext = document.getElementById('next');	
+		var oPrev = document.getElementById('prev');	
+		var aDiv = oBox.getElementsByTagName('div');
+		var iNow = 0;
+		var timer = null;
+		function show(){
+			for(var i = 0;i<aBtn.length;i++){
+				aBtn[i].className = '';
+				aDiv[i].style.display = 'none';
+			}
+			aBtn[iNow].className = 'on';
+			aDiv[iNow].style.display = 'block';
+		}
+		for(var i = 0;i<aBtn.length;i++){
+			aBtn[i].index = i;
+			aBtn[i].onclick = function(){
+				iNow = this.index;
+				show();	
+			};	
+		}
+		
+		//下一个 ctrl+shift+c 折叠代码 sublime ctrl+shift+[ ctr+shift+m
+		
+		function next(){
+			iNow++;
+			if(iNow == aBtn.length){
+				iNow =0;
+			}
+			show();			
+		}
+		clearInterval(timer);
+		timer = setInterval(next,1000);
+		oBox.onmouseover = function(){
+			clearInterval(timer);	
+		};
+		
+		oBox.onmouseout = function(){
+			timer = setInterval(next,1000);
+		};
+		
+		oNext.onclick = function(){
+			iNow++;
+			if(iNow == 3){
+				iNow =0;
+			}
+			show();			
+		};
+		
+		oPrev.onclick = function(){
+			iNow --;
+			if(iNow<0){
+				iNow =aBtn.length-1;
+			}
+			show();			
+		};
+		
+		
+	};
+</script>
+</head>
+<body>
+	<div id="box">
+        	<a href="javascript:;" id="prev">上一个</a>
+
+    	<input type="button" value="电影" class="on">
+    	<input type="button" value="小说">
+    	<input type="button" value="音乐">
+                <a href="javascript:;" id="next">下一个</a>
+
+        <div style="display:block;">寻龙诀</div>
+        <div>芈月传</div>
+        <div>如果你也听说</div>
+    </div>
+</body>
+</html>

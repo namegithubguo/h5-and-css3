@@ -1,0 +1,136 @@
+移动端
+1 百分比布局，流式布局
+width:calc(20%-2px);
+box-sizing:content-box;	边框往外挤
+box-sizing:border-box;	边框往里挤
+
+2 定宽布局
+.boa{width:1000px; .....}
+
+3 响应式布局
+media		媒体查询
+@media screen ......
+
+phone		pad		pc
+<320		320-680		>680
+
+@media screen and(max-width:320px){
+	div{background:red;}
+}
+@media screen and(min-width:320px) and(max-width:680px){
+	div{background:red;}
+}
+@media screen and(min-width:680px){
+	div{background:red;}
+}
+
+<link rel="stylesheet" href="" media="screen and (max-width:320px)" />
+<link rel="stylesheet" href="" media="screen and (min-width:321px) and (max-width:680px)" />
+<link rel="stylesheet" href="" media="screen and (min-width:681px)" />
+
+
+@inport url('phone.css') screen and (max-width:380px);
+@inport url('pad.css') screen and (min-width:380px) and (max-width:680px);
+@inport url('pc.css') screen and (min-width:681px);
+
+
+4 弹性布局
+父级{display:-webkit-box;}
+子集{-webkit-box-flex:1;}
+左侧给固定宽 右侧自定义
+
+父级{-webkit-box-orient:vertical;} 垂直弹性布局
+子集{-webkit-box-flex:1;}
+
+只能操作块元素 行内元素要转块
+
+overflow-y:auto;
+
+5 自适应布局
+em	1em=font-size
+rem	root html	1rem=html{font-size}
+
+<meta name="vieport" content="width=320,initial-scale=1,user-scalable=no" />
+width 		设备的宽度
+initial-scale	初始化缩放比例 
+user-scalable	用户缩放
+
+只要使用了rem切图就千万别用em和px
+
+新rem/新宽度=基准rem/基准宽度
+
+新rem=基准rem*新宽度/基准宽度
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

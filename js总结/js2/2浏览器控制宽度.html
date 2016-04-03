@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	#div1{width:100%;height:300px; background:#ccc;margin:0 auto;}
+</style>
+<script>
+	window.onresize = function(){
+			var oDiv = document.getElementById('div1');
+			function getStyle(obj,name){
+				return 	obj.currentStyle?obj.currentStyle[name]:getComputedStyle(obj,false)[name];
+			}
+			
+			var w = parseInt(getStyle(oDiv,'width'));
+			console.log(w);
+			if(w>1200){
+				oDiv.style.width = '1200px';
+			}else if(w>800){
+				oDiv.style.width = '800px';
+			}else{
+				oDiv.style.width = '420px';
+			}
+			
+	};
+</script>
+</head>
+<body>
+	<div id="div1">dfdasfsafasf</div>
+</body>
+</html>

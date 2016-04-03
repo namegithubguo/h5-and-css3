@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	var arr = [31, 6, 19, 8, 2, 3];
+	function findMin(start){
+		var iMin = 99999999999999;
+		var iMinIndex = -1;
+		for(var i =start;i<arr.length;i++){
+			if(arr[i]<iMin){
+				iMin = arr[i];
+				iMinIndex = i;
+			}
+		}
+		return iMinIndex;
+	}
+	for(var i = 0;i<arr.length;i++){
+		//最小数的位置
+		 var iMinIndex = findMin(i);
+		 var car = 0;
+		//把最小的和每一次第一个位置交换
+			car =arr[i]
+			arr[i] = arr[iMinIndex];
+			arr[iMinIndex] = car;
+	}
+
+	alert(arr);
+	
+	
+</script>
+</head>
+<body>
+&times;
+</body>
+</html>

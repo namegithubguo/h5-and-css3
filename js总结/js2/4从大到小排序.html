@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	
+	var  arr = [12,5,8,45,34,100,-100];
+	function findMax(start){
+		var iMax = arr[start];
+		var iMaxIndex = start;
+		for(var i = start+1;i<arr.length;i++){
+			if(arr[i]>iMax){
+				iMax = arr[i];
+				iMaxIndex = i;
+			}
+		}
+		
+		return iMaxIndex;
+	}
+	for(var i = 0;i<arr.length;i++){
+		//1.比较
+			//a）先找到最大值的位置
+			var iMaxIndex = findMax(i);
+			//当次的最大值arr[iMaxIndex]
+		//2.交换
+		var car;
+		car = arr[i];
+		arr[i] = arr[iMaxIndex];
+		arr[iMaxIndex] = car;
+	}
+	alert(arr);
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	window.onload = function(){
+		var oTxt = document.getElementById('txt');	
+		var oBtn = document.getElementById('btn');	
+		oBtn.onclick = function(){
+			//读取
+			//oTxt.value = 'fdasfdasfdsafasd';
+			//oTxt['value'] = '11111';
+			//alert(oTxt['value']);
+			//alert(oTxt.getAttribute('value'));
+			oTxt.setAttribute('value','32023-42343')	
+		};
+	};
+</script>
+</head>
+<body>
+	<input type="text" value="aaa" id="txt"><input type="button" value="按钮" id="btn">
+</body>
+</html>

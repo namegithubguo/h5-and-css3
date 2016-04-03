@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	*{margin:0;padding:0;}
+	li{ list-style:none;}
+	ul{ width:150px; border:1px solid #999; position:absolute; left:0;top:0; display:none;}
+	ul li{ height:36px; line-height:36px; text-align:center; color:#999; background:#eee; border-bottom:1px dashed #000;}
+	ul li:hover{color:#fff; background:#f90;}
+</style>
+<script>
+	window.onload = function(){
+		var oUl = document.getElementById('ul1');
+		var aLi = oUl.children;
+		document.oncontextmenu = function(ev){
+			var oEvent = ev||event;
+			oUl.style.left = oEvent.clientX +'px';
+			oUl.style.top = oEvent.clientY+'px';
+			oUl.style.display = 'block';
+			return false;	
+		};
+		
+		document.onclick = function(){
+			
+			oUl.style.display = 'none';	
+		};
+		
+		aLi[0].onclick = function(){
+			window.open('http://www.baidu.com');	
+		}; 
+		
+		aLi[1].onclick = function(){
+			window.location.reload();	
+		};
+		
+	};
+</script>
+</head>
+<body>
+	<ul id="ul1">
+    	<li>跳转到百度</li>
+        <li>刷新</li>
+    </ul>
+</body>
+</html>

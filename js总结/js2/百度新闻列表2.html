@@ -1,0 +1,73 @@
+<!--code by宋绪亭-->
+<!DOCTYPE html>
+<html> 
+<head>
+<title>新建网页</title>
+<meta charset="utf-8" />
+<meta name="description" content="网页描述"/>
+<meta name="Keywords" content="关键字"/>
+<style>
+	*{ padding: 0; margin: 0; }
+	h3{  }
+	a{ text-decoration: none; margin-left: 10px;  }
+</style>
+<script>
+		var arr = [
+			{
+				"title":'习近平十八大后首赴新疆，视察喀什军队武警',
+				"href":'http://www.baidu.com',
+				"child":[
+						{"title":'新疆考察，让群众有事干有盼头5555',"href":'http://www.baidu.com'},
+						{"title":'关心农村公路发展666',"href":'http://www.sina.com'}
+				]	
+			},
+			{
+				"title":'习近平十八大后首赴新疆，视察喀什军队武警2',
+				"href":'http://www.baidu.com',
+				"child":[
+						{"title":'新疆考察，让群众有事干有盼头',"href":'http://www.baidu.com'},
+						{"title":'关心农村公路发展',"href":'http://www.sina.com'}
+				]	
+			},
+			{
+				"title":'习近平十八大后首赴新疆，视察喀什3军队武警',
+				"href":'http://www.baidu.com',
+				"child":[
+						{"title":'新疆考察，让群众有事干有盼头',"href":'http://www.baidu.com'},
+						{"title":'关心农村公路发展',"href":'http://www.sina.com'}
+				]	
+			},
+		];
+		
+	window.onload = function(){
+		var oUl = document.getElementById('ul1');
+		for(var i = 0;i<arr.length;i++){
+			var oLi = document.createElement('li');
+			var oH = document.createElement('h2');
+			oH.innerHTML = '<a href="'+arr[i].href+'">'+arr[i].title+'</a>';
+			oLi.appendChild(oH);
+			//
+			for(var j = 0;j<arr[i].child.length;j++){
+				var oA = document.createElement('a');
+				oA.innerHTML = arr[i].child[j].title;
+				//alert(arr[i].child[j].title);
+				oA.href = arr[i].child[j].href; 
+				oLi.appendChild(oA);
+			}
+			
+			oUl.appendChild(oLi);	
+		}
+		
+		//oUl.appendChild(oLi);	
+	};
+</script>
+
+</head>
+ <body>
+ <ul id="ul1">
+
+
+        
+        </ul>
+ </body>
+</html>

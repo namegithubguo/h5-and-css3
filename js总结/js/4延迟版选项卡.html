@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	.on{ background:red;}
+	#box div{ width:300px;height:300px; background:#ccc; display:none;}
+</style>
+<script>
+	window.onload = function(){
+		var oBox = document.getElementById('box');
+		var aBtn = oBox.getElementsByTagName('input');	
+		var aDiv = oBox.getElementsByTagName('div');
+		var timer = null;	
+		for(var i = 0;i<aBtn.length;i++){
+			aBtn[i].index = i;
+			aBtn[i].onmouseover = function(){
+				var _this = this;
+				clearTimeout(timer);
+				timer = setTimeout(function(){
+					for(var i = 0;i<aBtn.length;i++){
+						aBtn[i].className = '';
+						aDiv[i].style.display = 'none';
+					}	
+					_this.className = 'on';
+					aDiv[_this.index].style.display = 'block';
+						
+					},300);
+			};
+			aBtn[i].onmouseout = function(){
+				clearTimeout(timer);	
+			};
+		}
+	};
+</script>
+</head>
+<body>
+	<div id ="box">
+    	<input type="button" value="电影" class="on">
+    	<input type="button" value="音乐">
+    	<input type="button" value="小说">
+        <div style="display:block">恶棍天使</div>
+        <div>如果你也听说</div>
+        <div>琅琊榜</div>
+    
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

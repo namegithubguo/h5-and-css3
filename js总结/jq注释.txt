@@ -1,0 +1,238 @@
+
+$('div').hide();	div消失
+$('div').show();	div出现
+
+$('div').slideUp();	div消失（向上滑消）
+$('div').slideDown();	div出现（向下滑出）
+$('div').fadeOut();	div消失（淡出）
+$('div').fadeIn();	div出现（淡入）
+
+$('div').stop().animate({height:50,width:50});	用animate可直接实现动画效果的变长变宽等效果
+
+bug：以上有bug需要加stop()，$('div').stop.slideUp();
+
+
+$('input').toggle(function(){},function(){});  绑定事件（一个事件绑定两个函数）
+
+
+mouseover和mouseout有bug  所以用hover
+$('对象').hover(function(){},function(){});  移入移出效果（第一个函数为移入，如果只放一个函数则移入移出都为此函数效果，如果只要移入效果那么第二个函数放空函数）
+
+
+
+jq选择器
+$('#box').css('background','red');	通过id选择
+$('.on').css('background','red');	通过class选择
+$('p').css('background','red');		通过标签名选择
+$('#box ol .active input')		通过#box下的ol下的.active下的input选择
+
+
+
+伪类选择器
+	//$('li:first').css('background','red');
+	//$('li:last').css('background','red');
+	//$('li:even').css('background','red');
+	//$('li:odd').css('background','red');
+	//$('li:eq(2)').css('background','red');
+	//$('li:lt(3)').css('background','red');
+	//$('li:gt(2)').css('background','red');
+
+$('div:contains("p")').css('background','red');  标签里包含 文本p 的标签 变为红色
+$('div:has("p")').css('background','red');	 给所有包含 <p> 标签的 div 元素 变为红色
+
+
+
+属性选择器	
+$('input[index=a]').css('background','red');  标签input里自定义属性index=“a” 选择带此属性的input
+
+
+
+操作css
+$('div').css('background','green');    div标签css的样式为green颜色
+
+
+
+设置属性值
+$('input').attr({value:'bbbbbbbb',title:'a'});		设置input的属性值  value为bbb，title为a
+
+
+class
+$('div').addClass('red aaaa');		添加除class名  可添加删除多个
+$('div').removeClass('box on');		删除class名
+
+
+
+innerHTML和value
+$('div').html('<strong>strongstrong</strong>');
+$('input').val('bbbbbbbbbbbbbbbbbbbb');
+
+
+
+获取下标
+$('li.on').index();
+$('li').eq(4).css('background','red');
+
+
+
+
+
+this
+$(this).css('background','red');	
+$(this).index（）	获取当前的下标
+
+
+
+siblings
+$("div").siblings(‘div’).hide()；	div的同级元素的div消失
+
+
+
+
+
+Dom操作
+$('<li></li>').appendTo('ul');	创建元素li
+$('<li>'+$('.txt').val()+' <a href="javascript:;">删除</a></li>').appendTo('ul');	创建元素li并附上内容
+
+$('<div><strong>abc</strong></div>').appendTo($('div'));	从前插入 $('内容')插入$('div')的子集
+$('#div').appendTo('div');
+$('<div><strong>abc</strong></div>').prependTo($('div'));	从后插入 $('内容')插入$('div')的子集
+
+
+$('<div><strong>abc</strong></div>').insertBefore($('div'));	从前插入  插入同级元素div前面
+$('<div><strong>abc</strong></div>').insertAfter($('div'));	从后插入  插入同级元素div后面
+
+
+$('#box').remove();	删除元素		删除名为#box的标签
+
+
+
+寻找div标签下某制定元素的方式
+$('div').find('p').css('background','red');	标签div下 所有p标签的 css变红
+
+
+
+寻找某元素的父级
+$('p').offsetParent().css('background','red');	p标签的 父级的 颜色变红（设置最近的父级定位元素的背景颜色）
+
+$('span').parent().css('background','red');		所有span的 父级的 颜色变红（查找每个段落的父元素）
+$('span').parent('.div2').css('background','red');	所有span的 父级里有class名为div2的 颜色变红
+$('span').parent('p').css('background','red');		所有span的 父级里为p标签的 颜色变红
+
+
+
+
+
+
+一个函数绑定两个事件：
+jq里边两个事件不冲突
+$('input').click(fn1);
+$('input').click(fn2);
+
+$('input').bind('click mouseover',函数名（function(){}）);	同时绑定多个事件类型
+$('input').unbind('mouseover',函数名);			删除bind的事件
+
+
+
+获取宽高等样式
+$('#box').width()	获取#box的width
+$('#box').innerWidth()	获取#box的width（width+padding）
+$('#box').outerWidth()	获取盒子模型的width（width+padding+border）
+$('li').height()	如果获取的是一组li的高度，只能获取到第一个li的高
+
+
+获取位置
+$('#div3').position().left	#div3到父级的left
+$('#div3').offset().left	#div3到body的left
+
+
+
+jq转原生：
+$('div')[1].style.background='red';
+$('div').get(2).style.background='red';
+转原生的两种方式  加下标和get（下标）
+
+
+
+原生转jq：
+var oDiv = document.getElementById('div1');
+$(oDiv).css('background','red');
+
+
+
+鼠标右键点击事件
+$(document).contextmenu(function(){
+		alert(1);
+		return false;
+	});
+
+
+
+事件冒泡：
+直接用  return false  可解决
+ev.stopPropagation();	也可用这个解决
+
+
+
+
+插件机制
+
+jq：
+'use strict'
+$.fn.extend({
+	csstyle:function(sName,sValue){
+		this.css(sName,sValue);
+	}
+});
+
+
+js：
+$(function(){
+	$('span').csstyle('background','red');
+	$('strong').csstyle('color','orange');
+	$('div').csstyle('height','1px');
+});
+
+
+
+
+
+
+链式操作：
+$('div').css('width','200px').css('height','200px').css('background','red').hide().show();
+
+
+
+获取鼠标x，y（left，top）位置：
+*ev在jq里边是兼容的,不用oEvent
+ev.clientX
+ev.clientY
+
+
+
+
+on、off：
+$('input').on('click',fn1);	鼠标点击input的时候执行函数fn1
+$('input').off('click',fn1);	取消鼠标点击input的时候执行函数fn1（如拖拽的document.onmousemove=null/$(document).off('mousemove');）
+
+$('ul').on('click','li',function(){});	鼠标点击ul下的li执行函数（可以防止bug例如：$('<li>'+$('.txt').val()+'</li>').appendTo('ul'); 创建一个li元素加入ul里如果$('ul li').on('click',function(){})这样写 会出现新创建的li元素不执行函数）
+
+$(document).on('mousemove',function(ev){
+			$('div').css({left:ev.clientX-disX,top:ev.clientY-disY});
+		});
+
+
+
+循环：
+var arr = [1,2,3,4,5];
+$(arr).each(function(index,element){alert(index);
+
+
+
+
+
+
+
+
+
+
+

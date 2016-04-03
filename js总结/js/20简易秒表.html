@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	window.onload = function(){
+		var oStart = document.getElementById('start');	
+		var oStop = document.getElementById('stop');	
+		var oTxt = document.getElementById('txt');
+		var t = 0;
+		var timer; 
+		function toDou(n){
+			return n<10?'0'+n:''+n;
+		}
+		oStart.onclick = function(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+			t++;
+			oTxt.value = toDou(parseInt(t/60))+':'+toDou(t%60);
+			},300);
+		};	
+		//stop
+		oStop.onclick = function(){
+			clearInterval(timer);
+		};
+	};
+</script>
+</head>
+<body>
+	<input type="text" value="00:00" id="txt">
+    <input type="button" value="开始" id="start">
+    <input type="button" value="停止" id="stop">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

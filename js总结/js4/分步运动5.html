@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{margin:0; padding:0;}
+body{background:#000;}
+span{color:#fff; font-size:50px; font-weight:bold; font-family:微软雅黑; opacity:0;}
+</style>
+<script src="move6.js"></script>
+<script>
+window.onload=function(){
+	var str = '20年前 亚平宁的浪漫属于足球 融化世界20世纪80年代末到90年代中期，意大利横扫欧洲以及国内赛场的七支球队。几乎每年都要带回一座欧洲奖杯，连续13年占据欧洲三大杯决赛至少一席。“意甲七姐妹”由此诞生。　20年后 从亚平宁半岛到遥远的东方 七强混战 群雄逐鹿今年的中超赛场，投入力度之大超乎想象。老牌劲旅土豪新贵。七支有希望争夺亚冠甚至冠军的球队相遇至此。2016的中国足坛如同20年前的意甲附体，难不成是“中超七姐妹”。';
+	for(var i=0;i<str.length;i++){
+		var oS = document.createElement('span');
+		oS.innerHTML = str.charAt(i);
+		document.body.appendChild(oS);
+	}
+	var aS = document.getElementsByTagName('span');
+	for(var i=0;i<aS.length;i++){
+		(function(index){
+			setTimeout(function(){
+				startMove(aS[index],{opacity:1});
+			},i*100);
+		})(i);
+	}
+};
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

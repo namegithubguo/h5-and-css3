@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+#box{width:600px; height:400px; margin:100px auto; position:relative; top:0; left:0; overflow:hidden;}
+#box ul{position:absolute; top:0; left:0; width:2400px; height:400px;}
+#box ul li{width:600px; height:400px; float:left; text-align:center; line-height:400px; font-size:50px;}
+#box ol{position:absolute; bottom:40px; left:50%; width:400px; height:20px; margin-left:-200px;}
+#box ol li{width:80px; height:20px; background:#ccc; margin:10px; float:left; position:relative;}
+#box ol li span{ position:absolute; width:0; height:20px; background:#F30;}
+</style>
+<script src="move6.js"></script>
+<script>
+window.onload=function(){
+	var oBox = document.getElementById('box');
+	var oUl = oBox.children[0];
+	var oOl = oBox.children[1];
+	var aLi = oUl.children;
+	var aS = oOl.getElementsByTagName('span');
+	var iNow = 0;
+	function next(){
+		for(var i=0;i<aS.length;i++){
+			aS[i].style.width = 0;
+		}
+		startMove(aS[iNow],{width:80},{easing:'linear',complete:function(){
+			iNow++;
+			if(iNow==aLi.length){
+				iNow = 0;
+			}
+			startMove(oUl,{left:-iNow*aLi[0].offsetWidth},{complete:function(){
+				next();
+			}});
+		}});
+	}
+	next();
+};
+</script>
+</head>
+
+<body>
+<div id="box">
+	<ul>
+		<li style="background:#f90;">0</li>
+		<li style="background:#399;">1</li>
+		<li style="background:#f33;">2</li>
+		<li style="background:#33f;">3</li>
+	</ul>
+	<ol>
+		<li><span></span></li>
+		<li><span></span></li>
+		<li><span></span></li>
+		<li><span></span></li>
+	</ol>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,171 @@
+官网
+
+ng-app   里面的东西都归angularjs管
+第二行<html ng-app="test">
+
+ng环境和原生环境
+1 ng环境和原生环境不互通
+
+angular 指令
+ng-app		
+ng-model	
+ng-bind		
+ng-click	点击事件
+ng-init 	初始值(加在父级)
+ng-repeat	item in arr
+ng-controller
+ng-show='true/false/0/1'
+ng-hide
+单向绑定:
+数据有连个角色
+1 数据从哪来
+2 数据到哪去
+
+<input type="text" ng-model="aaa" />
+<span ng-bind="aaa" ></span>
+
+双向绑定:
+<input type="text" ng-model="aaa" />
+<input type="text" ng-model="aaa" />
+
+<input type="text" ng-model="a" />
+<input type="text" ng-model="b" />
+<br />
+a是{{a}},b是{{b}}
+
+<input type="text" ng-model="a" />
+<input type="text" ng-model="b" />
+<br />
+<div class="{{a}}"></div>
+<div style="{{a}}"></div>
+<title>{{a}}</title>
+{{a*/-b}}
+
+<input type="text" ng-model="a" />
+<input type="button" value="按钮" ng-click="a=a+1" />
+
+<body ng-init="name=小明;age=18"> 父级
+<input type="text" ng-model="name" value="小明" />
+<input type="text" ng-model="age" value="18" />
+<br />
+我叫{{name}},今年{{age}}岁
+
+数组应用：
+    <ul ng-init="arr=['张三','李四'...]">
+	<li ng-repeat="item in arr">{{item}}</li>
+    </ul>
+
+json应用：
+    <ul ng-init="arr=[{'name':'张三','age':16}{'name':'李四','age':16}....]">
+	<li ng-repeat="item in arr">我的名字叫{{item.name}}，今年{{item.age}}</li>
+    </ul>
+
+
+借助controller
+1 获取一个app
+1 获取一个controller
+<script>
+	var app=angular.module('app的名字,[]');
+	aap.controller('abc',function($scope){
+	    $scope.aaa=12;
+	    $scope.bbb=2;
+	})
+</script>
+<body ng-controller="abc">
+
+
+<script>
+	var app=angular.module('app的名字,[]');
+	aap.controller('index',function($scope){
+	    $scope.arr=[{'name':'小明'，'age':12}，{'name':'小明'，'age':12}，{'name':'小明'，'age':12}，{'name':'小明'，'age':12}];
+	})
+</script>
+<body ng-controller="index">
+<ul>
+	<li ng-repeat="item in arr">我的名字叫{{item.name}}，今年{{item.age}}</li>
+</ul>
+
+
+<script>
+	var app=angular.module('app的名字,[]');
+	aap.controller('index',function($scope){
+	    $scope.a=0;
+	    $scope.parInt=function(arg){
+		return parseIn(arg)
+	}
+	})
+</script>
+<body ng-controller="index">
+<input type="text" ng-model="a" />
+<input type="text" ng-model="b" />
+{{a+b}}
+
+
+<script>
+	var app=angular.module('app的名字,[]');
+	aap.controller('main',function($scope,$http){
+	    $http.get('data.txt',{})
+	    .success(function(reful){
+		$scppe.arr=result; 
+	    })
+	    .error(function(){})
+	}
+	})
+</script>
+<body ng-controller="main">
+<ul>
+	<li ng-repeat="item in arr">我的名字叫{{item.name}}，今年{{item.age}}</li>
+</ul>
+
+
+
+
+<script>
+	var app=angular.module('app的名字,[]');
+	aap.controller('main',function($scope,$http){
+	    $scope.$watch('wd',funtion(str){
+		$http.jsonp(
+			url,
+			params:{
+			    wd:
+			}
+		)
+
+	})
+	    $http.get('data.txt',{})
+	    .success(function(reful){
+		$scppe.arr=result; 
+	    })
+	    .error(function(){})
+	}
+	})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

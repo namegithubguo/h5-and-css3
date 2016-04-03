@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	#div1{width:100px;height:100px; background:red;position:fixed; _position:absolute; right:0;bottom:0; }
+	body{height:3000px;}
+</style>
+<script>
+	window.onload = window.onresize = window.onscroll = function(){
+		//IE6
+		if(window.navigator.userAgent.indexOf('MSIE 6.0')!=-1){
+			var oDiv = document.getElementById('div1');	
+			//oDiv.style.top = 滚动距离+可视区高度-物体实际的高
+			var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+			var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+			var cW=document.documentElement.clientWidth;
+			var oW=oDiv.offsetWidth;
+			var cH = document.documentElement.clientHeight;
+			var oH = oDiv.offsetHeight;
+			oDiv.style.top =  scrollTop+cH - oH +'px';
+			oDiv.style.left=scrollLeft+cW-oW+'px';
+		}
+	};
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

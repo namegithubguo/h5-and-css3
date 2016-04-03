@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	/*body{ background:rgb(255,0,255);}*/
+</style>
+<script>
+	window.onload = function(){
+		function rnd(m,n){
+			return parseInt(m+Math.random()*(n-m));
+		}
+		setInterval(function(){
+			document.body.style.background = 'rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')';	
+			
+		},1000);
+	};
+</script>
+</head>
+<body>
+</body>
+</html>

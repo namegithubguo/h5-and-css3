@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	.div1{ width:200px;height:200px; background:#ccc;margin-top:10px;}
+</style>
+<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn');
+		var oDiv = document.getElementById('div1');
+		var oBtn2 =oDiv.children[0];
+		oBtn2.onclick = function(){
+			this.parentNode.style.background = 'red';	
+		}; 
+		oBtn.onclick = function(){
+			var oNewDiv = oDiv.cloneNode(true);	
+			
+			//oNewDiv.id = '';
+			var oBtn2 =oNewDiv.children[0];
+			oBtn2.onclick = function(){
+				this.parentNode.style.background = 'red';	
+			}; 
+			
+			oNewDiv.removeAttribute('id');
+			document.body.appendChild(oNewDiv);
+		};
+		
+		
+	};
+</script>
+</head>
+<body>
+	<input type="button" value = "复制" id="btn">
+    <div id="div1" class="div1">
+    	<input type="button" value="按钮">
+        fdsaklfjdasofjdsal
+    </div>
+</body>
+</html>

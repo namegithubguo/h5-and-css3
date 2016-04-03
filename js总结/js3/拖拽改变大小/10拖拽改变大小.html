@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	*{margin:0;padding:0;}
+	#div1{ width:400px;height:300px; top:100px;left:200px; background:red; position:absolute;}
+	.rb{width:30px;height:30px; background:#ccc; position:absolute; right:0;bottom:0;z-index:2;}
+	.rt{width:30px;height:30px; background:#ccc; position:absolute; right:0;top:0;z-index:2;}
+	.lt{width:30px;height:30px; background:#ccc; position:absolute; left:0;top:0;z-index:2;}
+	.lb{width:30px;height:30px; background:#ccc; position:absolute; left:0;bottom:0;z-index:2;}
+	.l{width:30px;height:100%; background:green; position:absolute; left:0;top:0;z-index:1;}
+	.t{width:100%;height:30px; background:green; position:absolute; left:0;top:0;z-index:1;}
+	.r{width:30px;height:100%; background:green; position:absolute; right:0;top:0;z-index:1;}
+	.b{width:100%;height:30px; background:green; position:absolute; left:0;bottom:0;z-index:1;}
+</style>
+<script>
+	window.onload = function(){
+		function drag(obj){
+			obj.onmousedown = function(ev){
+				var oEvent = ev||event;
+				var downX = oEvent.clientX;
+				var downWidth = oDiv1.offsetWidth;
+				var downLeft = oDiv1.offsetLeft;
+				
+				var downY = oEvent.clientY;
+				var downHeight = oDiv1.offsetHeight;
+				var downTop = oDiv1.offsetTop;
+				
+				document.onmousemove = function(ev){
+					var oEvent = ev||event;
+					
+					//如果左侧
+						if(obj.className.indexOf('l')!=-1){
+					oDiv1.style.width = downWidth - (oEvent.clientX - downX) +'px';	
+					oDiv1.style.left = downLeft + (oEvent.clientX - downX) +'px';
+						}
+					//如果上	
+						if(obj.className.indexOf('t')!=-1){
+					oDiv1.style.height = downHeight - (oEvent.clientY - downY) +'px';	
+					oDiv1.style.top = downTop + (oEvent.clientY - downY) +'px';
+						}
+					//如果是右
+						if(obj.className.indexOf('r')!=-1){
+					oDiv1.style.width =downWidth + oEvent.clientX -downX+ 'px';
+						}
+					//如果是下
+						if(obj.className.indexOf('b')!=-1){
+					oDiv1.style.height =downHeight + oEvent.clientY -downY+ 'px';
+						}
+				};
+				
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				};
+				
+				return false;
+			};
+		}
+		
+		var oDiv1 = document.getElementById('div1');	
+		for(var i = 0;i<oDiv1.children.length;i++){
+			drag(oDiv1.children[i]);
+		}
+	};
+</script>
+</head>
+<body>
+	<div id="div1">
+    	<div class="rb"></div>
+    	<div class="lt"></div>
+    	<div class="l"></div>
+    	<div class="t"></div>
+    	<div class="r"></div>
+    	<div class="b"></div>
+    	<div class="rt"></div>
+    	<div class="lb"></div>
+    </div>
+</body>
+</html>

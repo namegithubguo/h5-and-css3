@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	var json = {"user":"leo", "age":18, "class":"javascript"};
+	var str = '';
+	for(var i in json){
+		//i name  json[i]  leo
+		str +=  i+'='+json[i]+'&';
+	}
+		//
+		//alert(json['user']);
+	alert(str.substring(0,str.length-1));	
+	//'user=leo&age=18&class=javascript' 
+</script>
+</head>
+<body>
+</body>
+</html>

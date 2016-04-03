@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	textarea{ display:block; width:500px;height:100px;}
+</style>
+<script>
+	window.onload = function(){
+		var oT1 = document.getElementById('t1');
+		var oT2 = document.getElementById('t2');
+		var oBtn = document.getElementById('btn');
+		var oBtn2 = document.getElementById('btn2');
+		oBtn.onclick = function(){
+			'今天是个好日子'
+			var str =oT1.value;
+			var str2 = '';
+			for(var i = 0;i<str.length;i++){
+				str2+=String.fromCharCode(str.charCodeAt(i)+8);
+			}
+			
+			oT2.value = str2;
+		};
+		
+		oBtn2.onclick = function(){
+			var str = oT1.value;
+			var str2 = '';
+			for(var i = 0;i<str.length;i++){
+				str2+=String.fromCharCode(str.charCodeAt(i)-8);
+			}	
+			oT2.value = str2;
+		};
+
+	};
+</script>
+</head>
+<body>
+	<textarea id="t1"></textarea>
+    <input type="button" value="加密" id="btn">
+    <input type="button" value="解密" id="btn2">
+    <textarea id="t2"></textarea>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

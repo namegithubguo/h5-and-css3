@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+		function url2json(str){
+			var arr = str.split('&');
+			var json = {};
+			//var str = 'name=leo&age=18';     ->{name:leo,age:18}
+			for(var i = 0;i<arr.length;i++){
+				arr[i]=arr[i].split('=');
+				json[arr[i][0]] = arr[i][1];
+			}	
+			return json;
+		}
+		
+		var str = 'name=leo&age=18'; //    ->{name:leo,age:18}
+		var json = url2json(str);// -> ->{name:leo,age:18}
+		console.log(json);
+</script>
+</head>
+<body>
+</body>
+</html>

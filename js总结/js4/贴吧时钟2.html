@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+ul{overflow:hidden; width:264px; margin:100px auto;}
+li{width:24px; height:35px; position:relative; top:0; left:0; float:left; margin:0 10px;}
+li img{position:absolute; top:0; left:0;}
+</style>
+<script src="move8.js"></script>
+<script>
+function toDou(iNum){
+	return iNum<10?'0'+iNum:''+iNum;
+}
+window.onload=function(){
+	var aImg = document.getElementsByTagName('img');
+	setInterval(tick,1000);
+	tick();
+	function tick(){
+		var oDate = new Date();
+		var h = toDou(oDate.getHours());
+		var m = toDou(oDate.getMinutes());
+		var s = toDou(oDate.getSeconds());
+		var str = h+m+s;
+		for(var i=0;i<str.length;i++){
+			//aImg[i].style.top = -str.charAt(i)*35+'px';
+			startMove(aImg[i],{top:-str.charAt(i)*35},{duration:500});
+		}
+		
+	}
+};
+</script>
+</head>
+
+<body>
+	<ul>
+		<li><img src="num.png" /></li>
+		<li><img src="num.png" /></li>
+		<li><img src="num.png" /></li>
+		<li><img src="num.png" /></li>
+		<li><img src="num.png" /></li>
+		<li><img src="num.png" /></li>
+	</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

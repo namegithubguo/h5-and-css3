@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	window.onload = function(){
+		var oNum1 = document.getElementById('txt1');
+		var oNum2 = document.getElementById('txt2');
+		var oSele = document.getElementById('sele');
+		var oBtn = document.getElementById('btn');
+		oBtn.onclick = function(){
+			//eval???
+			alert(eval(oNum1.value+oSele.value+oNum2.value));
+			
+		};
+			
+	};
+</script>
+</head>
+<body>
+	<input type="text" id="txt1">
+    <select id="sele">
+    	<option>+</option>
+    	<option>-</option>
+    	<option>*</option>
+    	<option>/</option>
+    </select>
+	<input type="text" id="txt2">
+    <input type="button" value="结果" id="btn">
+</body>
+</html>

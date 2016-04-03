@@ -1,0 +1,138 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>智能课堂 —— 微博ajax接口测试 - www.zhinengshe.com</title>
+<link href="style/weibo.css" rel="stylesheet" type="text/css" />
+<script src="all_ajax.js"></script>
+<script>
+//m
+function getData(n,fn){
+	ajax({
+		url:'weibo.php',
+		data:{
+			act:'get',
+			page:n
+		},
+		success:function(str){
+			var arr = eval('('+str+')');
+			fn&&fn(arr);
+		},
+		error:function(err){
+			alert('失败：'+err);
+		}
+	});
+}
+//v
+function templete(oTmp,data){
+	obj = oTmp.cloneNode(true);
+	obj.removeAttribute('id');
+	obj.innerHTML = obj.innerHTML.replace(/\{\$\w+\}/g,function(str){
+		str = str.substring(2,str.length-1);
+		return data[str];
+	});
+	return obj;
+}
+function createReply(arr){
+	var oMsgList = document.getElementById('msgList');
+	var oTmp = document.getElementById('tmp_reply');
+	oMsgList.innerHTML = '';
+	for(var i=0;i<arr.length;i++){
+		var oReply = templete(oTmp,arr[i]);
+		if(oMsgList.children.length==0){
+			oMsgList.appendChild(oReply);
+		}else{
+			oMsgList.insertBefore(oReply,oMsgList.children[0]);
+		}
+	}
+}
+window.onload=function(){
+	getData(1,function(arr){
+		createReply(arr);
+	});
+};
+
+/*function getData(n,fn){
+	ajax({
+		url:'weibo.php',
+		data:{
+			act:'get',
+			page:n
+		},
+		success:function(str){
+			var arr=eval('('+str+')');
+			fn&&fn(arr)
+		},
+		error:function(err){
+			alert('shibai:'+err)
+		}
+	})
+}
+
+function templete(oTmp,data){
+	var oRe=oTmp.cloneNode(true);
+	oRe.removeAttribute('id');
+	oRe.innerHTML=oRe.innerHTML.replace(/\{\$\w+\}/g,function(str){
+		str=str.substring(2,str.length-1);
+		return data[str];
+	})
+	return oRe;
+}
+
+function createply(arr){
+	var oMsgList = document.getElementById('msgList');
+	var oTmp = document.getElementById('tmp_reply');
+	oMsgList.innerHTML='';
+	for(var i=0;i<arr.length;i++){
+		var oReply=templete(oTmp,arr[i])
+		if(oMsgList.children.length==0){
+			oMsgList.appendChild(oReply);
+		}else{
+			oMsgList.insertBefore(oReply,oMsgList.children[0]);
+		}
+	}
+}
+
+window.onload=function(){
+	getData(1,function(arr){
+		createply(arr)
+	})
+}*/
+</script>
+</head>
+
+<body>
+<div class="znsArea">
+<!--留言-->
+     <div class="takeComment">
+        <textarea name="textarea" class="takeTextField" id="tijiaoText"></textarea>
+        <div class="takeSbmComment">
+            <input type="button" class="inputs" value="" id="send_btn" />
+            <span>(可按 Enter 回复)</span>
+        </div>
+    </div>
+<!--已留-->
+    <div class="commentOn">
+        <div class="noContent" id="nc">暂无留言</div>
+        <div class="messList" id="msgList">
+        	<div class="reply" id="tmp_reply">
+                <p class="replyContent" style="color:red;">{$content}</p>
+                <p class="operation">
+                    <span class="replyTime">{$time}</span>
+                    <span class="handle">
+                    	<a href="javascript:;" class="top">{$acc}</a>
+                        <a href="javascript:;" class="down_icon">{$ref}</a>
+                        <a href="javascript:;" class="cut">删除</a>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="page" id="page">
+        	<!--<a href="javascript:;" class="active">1</a>
+        	<a href="javascript:;">2</a>
+        	<a href="javascript:;">3</a>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

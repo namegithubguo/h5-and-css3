@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn');
+		var oS = document.getElementById('sele');
+		
+		oBtn.onclick = function(){
+			for(var i = 0;i<oS.options.length;i++){
+				oS.options.remove(i--);
+			}
+		};	
+	};
+</script>
+</head>
+<body>
+	<input type="button" value="删除" id="btn">
+	<select id="sele">
+    	<option value="1">帝都</option>
+        <option value="2">魔都</option>
+        <option value="3">东莞</option>
+        <option value="4">西安</option>
+        <option value="5">成都</option>
+    </select>
+
+</body>
+</html>

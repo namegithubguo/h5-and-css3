@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	window.onload = function(){
+		var oDiv = document.getElementById('div1');
+		
+		function setStyle(obj,name){
+			
+			//obj.style[样式名] = 样式值
+			for(var i in name){
+				//alert(i);样式的名字
+				//alert(name[i]);样式的值
+				obj.style[i] = name[i];
+			}
+		}
+
+		setStyle(oDiv,{width:'300px',height:'300px',background:'red'});	
+	};
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

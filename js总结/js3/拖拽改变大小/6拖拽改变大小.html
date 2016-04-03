@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	*{margin:0;padding:0;}
+	#div1{ width:400px;height:300px; top:100px;left:200px; background:red; position:absolute;}
+	.rb{width:30px;height:30px; background:#ccc; position:absolute; right:0;bottom:0;z-index:2;}
+	.lt{width:30px;height:30px; background:#ccc; position:absolute; left:0;top:0;z-index:2;}
+	.l{width:30px;height:100%; background:green; position:absolute; left:0;top:0;z-index:1;}
+	.t{width:100%;height:30px; background:green; position:absolute; left:0;top:0;z-index:1;}
+	.r{width:30px;height:100%; background:green; position:absolute; right:0;top:0;z-index:1;}
+	.b{width:100%;height:30px; background:green; position:absolute; left:0;bottom:0;z-index:1;}
+</style>
+<script>
+	window.onload = function(){
+		var oDiv1 = document.getElementById('div1');	
+		var oRb = oDiv1.children[0];
+		oRb.onmousedown = function(ev){
+			var oEvent = ev||event;
+			//1.获取div1.w
+			var downWidth = oDiv1.offsetWidth;
+			var downHeight = oDiv1.offsetHeight;
+			//鼠标按下的点
+			var  downX = oEvent.clientX;
+			var  downY = oEvent.clientY;
+			document.onmousemove = function(ev){
+				var oEvent = ev||event;
+				
+				//要改变的是oDiv1宽度
+				//原来的宽+鼠标移动的距离
+				oDiv1.style.width =downWidth + oEvent.clientX -downX+ 'px';
+				oDiv1.style.height =downHeight + oEvent.clientY -downY+ 'px';
+			};
+			
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			
+			return false;
+			  
+		};	
+		
+		//左上角
+		var oLt = oDiv1.children[1];
+		oLt.onmousedown = function(ev){
+			var oEvent = ev||event;
+			var downX = oEvent.clientX;
+			var downWidth = oDiv1.offsetWidth;
+			var downLeft = oDiv1.offsetLeft;
+			
+			var downY = oEvent.clientY;
+			var downHeight = oDiv1.offsetHeight;
+			var downTop = oDiv1.offsetTop;
+			
+			document.onmousemove = function(ev){
+				var oEvent = ev||event;
+				oDiv1.style.width = downWidth - (oEvent.clientX - downX) +'px';	
+				oDiv1.style.left = downLeft + (oEvent.clientX - downX) +'px';
+				oDiv1.style.height = downHeight - (oEvent.clientY - downY) +'px';	
+				oDiv1.style.top = downTop + (oEvent.clientY - downY) +'px';
+				
+			};
+			
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			
+			return false;
+		};
+		
+		//左侧
+		var oL = oDiv1.children[2];
+		oL.onmousedown = function(ev){
+			var oEvent = ev||event;
+			var downX = oEvent.clientX;
+			var downWidth = oDiv1.offsetWidth;
+			var downLeft = oDiv1.offsetLeft;
+			document.onmousemove = function(ev){
+				var oEvent = ev||event;
+				oDiv1.style.width = downWidth - (oEvent.clientX - downX) +'px';	
+				oDiv1.style.left = downLeft + (oEvent.clientX - downX) +'px';
+				
+			};
+			
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			
+			return false;
+		};
+
+		
+		//顶部
+		var oT = oDiv1.children[3];
+		oT.onmousedown = function(ev){
+			var oEvent = ev||event;
+			var downY = oEvent.clientY;
+			var downHeight = oDiv1.offsetHeight;
+			var downTop = oDiv1.offsetTop;
+			
+			document.onmousemove = function(ev){
+				var oEvent = ev||event;
+				oDiv1.style.height = downHeight - (oEvent.clientY - downY) +'px';	
+				oDiv1.style.top = downTop + (oEvent.clientY - downY) +'px';
+				
+			};
+			
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			
+			return false;
+		};
+		//右侧
+		var oR = oDiv1.children[4];
+		oR.onmousedown = function(ev){
+			var oEvent = ev||event;
+			//1.获取div1.w
+			var downWidth = oDiv1.offsetWidth;
+			//鼠标按下的点
+			var  downX = oEvent.clientX;
+			document.onmousemove = function(ev){
+				var oEvent = ev||event;
+				
+				//要改变的是oDiv1宽度
+				//原来的宽+鼠标移动的距离
+				oDiv1.style.width =downWidth + oEvent.clientX -downX+ 'px';
+			};
+			
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			
+			return false;
+			  
+		};	
+		//下面
+		var oB = oDiv1.children[5];
+		oB.onmousedown = function(ev){
+			var oEvent = ev||event;
+			//1.获取div1.w
+			var downHeight = oDiv1.offsetHeight;
+			//鼠标按下的点
+			var  downY = oEvent.clientY;
+			document.onmousemove = function(ev){
+				var oEvent = ev||event;
+				
+				//要改变的是oDiv1宽度
+				//原来的宽+鼠标移动的距离
+				oDiv1.style.height =downHeight + oEvent.clientY -downY+ 'px';
+			};
+			
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			
+			return false;
+			  
+		};	
+		//fdsfdasfds
+	};
+</script>
+</head>
+<body>
+	<div id="div1">
+    	<div class="rb"></div>
+    	<div class="lt"></div>
+    	<div class="l"></div>
+    	<div class="t"></div>
+    	<div class="r"></div>
+    	<div class="b"></div>
+    </div>
+</body>
+</html>

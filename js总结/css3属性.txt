@@ -1,0 +1,171 @@
+自定义
+data-xxx="xxx";
+向后兼容
+obj.dataset.xxx;
+可以遍历
+性能低
+
+
+background可以有多张背景图
+background-size:背景图大小;
+background-size:contain; 	显示完整
+background-size:cover; 		充满
+=================================================
+js选择器
+document.querySelectorAll();		获取一组
+document.querySelector(); 			获取一个
+
+function setStyle(obj,name,value){
+	obj.style['Webkit'+name.charAt(0).toUpperCase()+name.substring(1)] = value;
+	obj.style['Moz'+name.charAt(0).toUpperCase()+name.substring(1)] = value;
+	obj.style['ms'+name.charAt(0).toUpperCase()+name.substring(1)] = value;
+	obj.style['O'+name.charAt(0).toUpperCase()+name.substring(1)] = value;
+	obj.style[name] = value;
+}
+
+setStyle(oDiv,'transition','1s all ease');
+
+===================================================
+class操作
+obj.classList 			所有的class
+obj.classList.add() 	添加
+obj.classList.remove() 	删除
+obj.classList.contains()包含
+obj.classList.toggle() 	切换
+
+=================================================
+css3
+颜色:  		rgba(red,green,blue,alpha);
+圆角:		border-radius
+图片阴影： 	box-shadow
+文字阴影： 	text-shadow
+
+蒙版:		
+mask
+做蒙版，必须用透明的图
+png,gif
+原理：只要有颜色就透出来
+
+颜色有没有透明的
+-webkit-linear-gradient();
+
+文字蒙版：
+-webkit-background-clip:text;
+
+渐变: 		
+linear-gradient
+线性渐变
+-webkit-linear-gradient(颜色,颜色,颜色.....);
+
+-webkit-linear-gradient(方向/角度,颜色,颜色.....);
+
+重复
+background:-webkit-repeating-linear-gradient(-45deg,red 0px, red 20px,#fff 20px,#fff 40px,blue 40px, blue 60px, #fff 60px, #fff 80px);
+
+径向渐变
+-webkit-radial-gradient( 100px 100px,#fff 1%,#000)
+
+
+运动： 		
+transition
+transition:时间  样式  运动类型		1s  all linear(ease)
+
+transition:时间 样式   运动类型 延迟;		transition:1s all ease 2s;
+
+transitionend 			当运动结束的时候出发
+必须用事件绑定
+
+高级运动:
+animation
+	animation-name: test						名字
+	animation-duration: .4s					时间
+	animation-timing-function: linear				运动形式
+	animation-iteration-count: infinite				迭代次数
+				infinite 			无穷，无限
+	animation-direction:; 					走向
+				alternate 			轮流，交替
+	animation-play-state: 					播放状态
+				paused 						暂停
+				running 					走
+
+transform:
+旋转 	rotate(deg)
+	rotateX(deg)
+	rotateY(deg)
+	
+平移 	translate（x,y）
+	translateZ()
+缩放 	scale(x,y)
+扭曲 	skew(x,y)
+
+透视效果 perspective(1000px) 让谁动就给谁加
+
+transform-style:preserve-3d; 把2d转变成3d
+
+改变原点
+transform-origin:x y; left top right bottom px %
+
+===================================================
+css3
+圆角
+border-radius: %或者px;
+border-radius: 左上右下   右上左下;
+border-radius: 左上   右上左下   右下;
+border-radius: 左上  右上  右下  左下;
+
+
+
+=============================================
+css3 	浏览器前缀
+-webkit- 		chrome,safari,opera
+-moz- 			firefox
+-ms- 			IE
+-o- 			opera
+不加前缀
+
+js操作遇到-就大写
+但是ie有问题：ms要小写
+
+*以后我只管-webkit-
+
+=============================================
+阴影： 
+box-shadow:x偏移 y轴偏移 blur color;
+box-shadow:[inset] x偏移 y轴偏移 blur [范围] color;
+
+可以叠加
+box-shadow:x y blur color,x y blur color.....;
+
+
+
+css3不会改变盒子模型。改变的是视觉。
+性能非常高，不会触发重绘，重排。
+
+
+文字阴影：
+text-shadow:x y blur color;
+
+================================================
+css3选择器
+属性选择器
+E[name] 		有这个属性的标签
+E[name=value] 	有这个属性而且只有这个值
+E[name~=value] 	有value这个词的
+E[name*=value] 	只要包含value这个词的
+E[name^=value] 	value开头的
+E[name$=value] 	value结尾的
+E[name|=value] 	已value-开头的或只有这个值
+
+伪类选择器
+li:nth-child(n) 		第几个
+li:first-child 		第一个
+li:last-child 		最后一个
+
+文本选择器
+p:first-line 		第一行
+:first-letter 		第一字
+::selection 		选中后
+::after 			后面
+			p::after{content:''} 在p标签内容 后边添加内容“”
+::before 			前面
+			content:'

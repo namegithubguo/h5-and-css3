@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+*{margin:0; padding:0; list-style:none; text-decoration:none;}
+#box{width:800px;height:453px; position:relative; margin:100px auto; overflow:hidden;}
+#box ul{position:absolute; left:0; top:0;}
+#box ul li{width:800px;height:453px; float:left;}
+#box ul li img{width:100%;}
+#box ol{position:absolute; left:50%; bottom:20px; width:250px; margin-left:-125px;}
+#box ol li{width:30px; height:30px; background:#fff; float:left; margin:10px; border-radius:50%;}
+#box ol li.on{background:#f90;}
+#box a{position:absolute; width:80px; height:60px; text-align:center; line-height:60px; top:50%; margin-top:-30px; background:rgba(0,0,0,0.5); font-size:30px; color:#fff; display:none;}
+#box a:hover{background:rgba(255,0,0,0.4);}
+#box a.prev{left:0;}
+#box a.next{right:0;}
+</style>
+<script src="move9.js"></script>
+<script>
+window.onload=function(){
+	var oBox = document.getElementById('box');
+	var oUl = oBox.children[0];
+	var oOl = oBox.children[1];
+	var oPrev = oBox.children[2];
+	var oNext = oBox.children[3];
+	oUl.innerHTML+=oUl.innerHTML;
+	var aLi = oUl.children;
+	var aBtn = oOl.children;
+	oUl.style.width = aLi.length*aLi[0].offsetWidth+'px';
+	var W = oUl.offsetWidth/2;
+	var iNow = 0;
+	oBox.onmouseover=function(){
+		oPrev.style.display='block';
+		oNext.style.display='block';
+	};
+	oBox.onmouseout=function(){
+		oPrev.style.display='none';
+		oNext.style.display='none';
+	};
+	
+	for(var i=0;i<aBtn.length;i++){
+		(function(index){
+			aBtn[i].onclick=function(){
+				iNow = index;
+				tab();
+			};
+		})(i);
+	}
+	function tab(){
+		for(var i=0;i<aBtn.length;i++){
+			aBtn[i].className='';
+		}
+		if(iNow>0){
+			aBtn[iNow%aBtn.length].className='on';
+		}else{
+			aBtn[(iNow%aBtn.length+aBtn.length)%aBtn.length].className='on';
+		}
+		//oUl.style.left = -iNow*aLi[0].offsetWidth+'px';
+		startMove(oUl,{left:-iNow*aLi[0].offsetWidth},{duration:300});
+	}
+	oPrev.onclick=function(){
+		iNow--;
+		tab();
+	};
+	oNext.onclick=function(){
+		iNow++;
+		tab();
+	};
+};
+</script>
+</head>
+
+<body>
+<div id="box">
+	<ul>
+		<li><img src="img/0.jpg" /></li>
+		<li><img src="img/1.jpg" /></li>
+		<li><img src="img/2.jpg" /></li>
+		<li><img src="img/3.jpg" /></li>
+		<li><img src="img/4.jpg" /></li>
+	</ul>
+	<ol>
+		<li class="on"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ol>
+	<a href="javascript:;" class="prev">prev</a>
+	<a href="javascript:;" class="next">next</a>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

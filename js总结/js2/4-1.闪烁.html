@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+#div1 {width:200px; height:200px; background:#CCC;}
+#div1.on0{background:red;}
+#div1.on1{background:green;}
+</style>
+<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn1');
+		var oDiv = document.getElementById('div1');
+		var timer;
+		oBtn.onclick = function(){
+			var i = 0;
+			clearInterval(timer);
+			timer = setInterval(function(){
+				oDiv.className = 'on'+i%2;
+				i++;
+				if(i == 20){
+					clearInterval(timer);
+				}
+			},30);
+			
+		};	
+	};
+</script>
+</head>
+
+<body>
+<input type="button" value="闪" id="btn1" />
+<div id="div1"></div>
+</body>
+</html>

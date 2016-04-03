@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	window.onload = function(){
+		var oUl = document.getElementById('ul1');
+		//写
+		function getByClass(oParent,sClass){
+			var aAll = oParent.getElementsByTagName('*');
+			var result = [];
+			//12 [12,5,8] ->box [box,box2]
+			//查找一个字符串是否在数组中
+			function findInArr(str,arr){
+				for(var i = 0;i<arr.length;i++){
+					if(arr[i] == str){
+						return true;
+					}
+				}
+				return false;
+			}
+			for(var i = 0;i<aAll.length;i++){
+				//alert(aAll[i].className);// box box2 ->[box,box2]
+				var arr = aAll[i].className.split(' ');
+				//className 'box' == 'box'
+				//className 'box box2' 'box box6' 不等于‘box’但是也需要变红
+				//检查box是否在 类名的数组['box','box2']  ['box','box6']中
+				if(findInArr(sClass,arr)){
+					result.push(aAll[i]);
+				}
+			}
+			return result;
+		}
+		//用
+		//[li.box,li.box,li.box,span.box]
+		//父级，子级里面需要包含的类名
+		var aBox = getByClass(oUl,'box');
+		for(var i = 0;i<aBox.length;i++){
+			aBox[i].style.background = 'red';
+		}	
+	};
+</script>
+</head>
+<body>
+	<ul id="ul1">
+        <li class="box6 box">1111111</li>
+        <li class="box box2">2222</li>
+        <li class="box active">33333</li>
+        <li class="box2">44444</li>
+        <li class="box">555555</li>
+        <span class="box">6666666</span>
+    </ul>
+</body>
+</html>

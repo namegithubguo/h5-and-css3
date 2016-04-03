@@ -1,0 +1,1074 @@
+
+
+1.事件
+onclick onmouseover onmouseout 
+oncontextmenu 鼠标右键事件  
+onmousedown  按住	    
+onmousemove  拖动		
+onmouseup    松开		
+onkeydown 键盘按下		
+onkeyup   键盘松开		
+onchange  select下拉事件		
+onfocus   获得焦点		
+onblur    失去焦点		
+onresize onscroll 图片延迟加载  响应式布局  
+onscroll 瀑布流	
+onload onerror  图片加载进度条
+onsubmit	提交事件
+onmousewheel    鼠标滚轮事件（chrom IE）
+DOMMouseScroll	鼠标滚轮事件（FF）
+window.open('网址','_blank')  打开窗口
+window.close() 关闭窗口
+
+oninput
+oninput 事件在用户输入时触发。
+该事件在 <input> 或 <textarea> 元素的值发生改变时触发。
+提示： 该事件类似于 onchange 事件。不同之处在于 oninput 事件在元素值发生变化是立即触发， onchange 在元素失去焦点时触发。另外一点不同是 onchange 事件也可以作用于 <keygen> 和 <select> 元素。
+
+
+oBtn.disabled=true;      可以点击
+oBtn.disabled=false;	 不可点击
+应用于倒计时例子
+
+disabled 属性规定应该禁用 input 元素。
+被禁用的 input 元素既不可用，也不可点击。可以设置 disabled 属性，直到满足某些其他的条件为止（比如选择了一个复选框等等）。然后，就需要通过 JavaScript 来删除 disabled 值，将 input 元素的值切换为可用。
+注释：disabled 属性无法与 <input type="hidden"> 一起使用。
+
+
+2.获取一个元素或一组
+document.getElementByid
+document.getElementsByTagName
+document.body
+document.title
+getElementsByClassName	通过类名获取一组元素 不兼容
+getByClass()
+
+
+3.for、while、i in json循环
+
+	var i = 0;	初始条件 
+	while(i<5){	终止条件
+		alert(i); //重复操作
+		i++;	//自增
+	}
+
+	*如果没有终止条件会变成死循环，要避免
+
+
+	for(初始条件；终止条件；自增){
+		//重复操作
+	}
+	for（var i = 0;i<5;i++）{
+		//重复操作
+	}
+	
+	json:
+	for(var i in json){};
+
+4.操作属性和样式的方法
+	.	方便 灵活
+	[]	点能做的方括号都才能做，另外能够使用变量，参数，字符串 更灵活
+	oDiv.style.display
+	json.a  json['a']
+
+
+
+5.提取行间事件
+	window.onload = function(){};
+        
+        页面加载完成之后执行
+        window.onload=function (){
+	     xxx
+        };
+
+ 获取非行间样式
+	IE  元素.currentStyle  获取的是当前起作用的样式
+
+	FF Chrome	getComputedStyle(元素，false) 获取计算后的样式
+
+	getStyle()
+	function getStyle(obj,name){
+		//IE
+		if(obj.currentStyle){
+			return 	obj.currentStyle[name];
+		}else{
+			return	getComputedStyle(obj,false)[name];
+		}
+	}
+	getStyle(oDiv,'width')
+
+	function getStyle(obj,name){
+		return (obj.curentStyle||getComputedStyle(obj,false))[name];
+	}
+
+
+6.函数
+	定义
+		function setColor(){
+		}
+	执行
+		setColor()
+
+	传参
+		function 函数名（参数，参数2）{
+		}
+		函数名（‘要传的值’，‘要传的值’）；
+		function setColor(color){
+		
+		}
+
+
+7.代码调试
+	软调	借助工具  软件
+		
+		工具 F12   IE  FF  Firbug
+		IE调试：
+		齿轮 -- internet选项--  高级-------
+		勾选  允许活动的内容在我的电脑中运行
+		禁用脚本调试  取消勾选
+
+	硬调	
+		alert()   
+		console.log()   chrome ->console(控制台输出)			F12
+		document.title
+
+
+
+8.js常见数据类型   6种
+
+   数字  	12		number 
+
+   字符串	‘aaa’		string
+
+   布尔值	true false	boolean
+
+   未定义	                undefined
+	1）变量  直接使用一个值 未定义  2）定义了没有赋值 3）访问未定义的属性
+	 
+   **function	函数  有的书上说 
+		
+   object		对象
+
+基本数据类型：  number	string boolean	undefined
+复合数据类型：  object   width  height  background  
+
+真     非0数字  非空的字符串	true	  非空对象	数组、空数组都是真的		
+假      0	空的字符串	false     空对象null	undefined	NaN
+
+
+
+9.typeof 检测数据的类型
+	12			number 
+	'aa'			string
+	true			boolean
+	oDiv			object
+
+
+
+
+10.数据类型转换
+	
+  强制类型转换    
+	parseInt转整数	parseInt    '12'		12
+			parseInt    '1234blue'          1234
+				从左往右找，直到第一个不是数字的地方放回
+	parseFloat  '12.5abc'    12.5
+	parseFloat  '12.5'       12.5    
+	跟parseInt一样但是 更强能够转小数	
+	Number    ’12‘-》12     ’12.5‘-》12.5    12.5px ->NaN   更严格 只认识看起来是数字的
+						
+  NaN
+	parseFloat('abc12')  ->   NaN
+	NaN   ->Not a Number      NaN不是一个数字 但是number类型 
+	NaN == NaN                NaN 跟任何值都不想等，包括NaN
+
+	????如何检测一个数值 是不是NaN
+	isNaN(   )  如果是NaN那么返回true 如果不是 返回false
+	 
+  隐式类型转换
+	我没转，计算机偷偷的给我转了
+	'12' +5  ->'12' +'5'     + 字符串拼接 
+
+	'12' -5  ->7		 - * / % 字符串转数字
+	
+
+
+
+11.自定义属性
+	this.index
+	this 当前的  谁触发的时间this就是谁
+
+
+
+12.字符串 拼接
+	var time = '今年';
+	var filmtype = '电影'；
+	var film = '寻龙诀';
+
+	var str =time+’比较好看的'+file+'是‘+film;
+
+
+
+13.函数的作用域 范围 区域
+	1.局部	放在函数里面
+	2.全局	所有函数 都能使用
+	3.闭包	子函数能够使用父级变量 
+
+
+
+14.命名规范
+	   
+	1） = 一定要加；2）代码命名 一定要符合规范 3）花括号对齐
+	
+
+	匈牙利命名法
+	目的：增强可读性 2.防止错误
+	1） 首字母 要求说明类型
+		必须
+		oDiv		object 对象
+		aLi 		array 数组
+		布尔
+		*bOK		布尔值
+	
+	2）其余单次 首字母大写
+		
+	*****aBtn -> array
+	*****oDiv -> object
+	**对象	o	Object	oDiv1
+	**数组	a	Array	aItems
+	字符串	s	String	sUserName
+	整数	i	Integer	iItemCount
+	*布尔值	b	Boolean	bIsComplete 
+	浮点数	f	Float	fPrice
+	函数	fn	Function	fnHandler
+	正则表达式	re	RegExp	reEmailCheck
+	变体变量	v	Variant	vAnything
+
+
+
+15.运算符
+	算数运算符:	+ - * /  %
+			隔行变色     秒转时间
+			parseInt(183/60)  183%60
+			i%2
+			
+	赋值运算符:	= += -=  *=   /=     %=
+	比较运算符:        > < >= <= !=	==  ===  !== ！===
+
+	===不仅长得像 而且类型 一模一样  完全一样
+
+	逻辑运算符:
+		
+		&& 并且
+			
+		|| 或者
+			
+		！ 取反
+			！true	
+
+
+
+16.判断：
+	请写出一个流程控制语句,控制代码的走向：
+	if(){}else{}
+	
+	var a = 1
+	switch(a){
+		
+		case 1:
+			alert(1);
+		break;
+		case 2:
+			alert(2);
+		break;
+		default:
+			alert('其他');
+		break;
+	}
+
+	swith(条件){
+		case   条件可能的取值：
+			执行的语句；
+			break;
+		default:
+			默认的情况；
+			break;
+	}
+
+	循环
+ 	break;终止程序执行
+	continue；跳出当次循环
+
+	if判断  用的比较多    3条件以内
+	switch 适合 条件 确定的情况	3条件以上
+
+	for	长度确定的循环
+	while	长度不确定
+
+
+
+
+
+
+eval  把 字符串变成 一段可执行的js代码
+		str = '12+5'
+		eval(str)
+		alert(eval(str)) 等价于 alert(12+5)
+		eval 非常强大 好  但是太强大了 所以不让用
+	
+	
+
+17.if简写
+	var a =12;
+	if(a  == 12){
+		alert(12);
+	}
+	a==12&&alert('12');
+
+	三目运算符
+	条件成立不？执行语句1：执行语句2
+	a==500?alert('可以吃一顿方便面'):alert('我自己下挂面');
+
+
+18.函数返回值
+	
+	函数的执行结果
+	return 
+	从哪里来回哪里去 
+	用函数的返回值 代替 执行结果	
+
+	特性：	
+		返回值					    变量
+	如果一个函数没有return  那么 它返回undefined	alert(b);
+	如果一个函数有return 没有返回值	返回undefined	var a;
+							alert(a);
+
+	return后面函数里面的代码不执行				
+	1.知道怎么用 2.什么时候用    
+
+
+19.定时器 
+	开定时器 一定要先清后开
+	第一种：
+		setInterval(事儿,间隔时间)  多长时间间隔做一次这个事儿，永远去做
+		1000ms = 1s
+		setInterval(函数，毫秒); 函数本身或者函数名
+		跟onclick一样 函数不需要加（）为什么？？后面面会讲
+		它有返回值 
+	第二种：
+	
+		setTimeout事儿，延迟时间);    延迟多长时间 干这件事儿，只干一次
+		setTimeout(函数，毫秒); 函数本身或者函数名
+
+	清除定时器
+		创建
+		var timer;
+		timer = setInterval(函数，毫秒); 
+		clearInterval(timer)
+		cleartTimeout((timer))
+
+
+20.日期对象
+	获取和设置的是客户端时间，并不是服务器端
+	
+		var oDate = new Date(); 创建日期对象
+		var y = oDate.getFullYear();//获取年
+		var m = oDate.getMonth()+1;//比真实月少一
+		var week = oDate.getDay(); //星期几，星期日 星期0
+		var d = oDate.getDate();//日期
+		var H = oDate.getHours(); 小时
+		var M = oDate.getMinutes(); 分钟
+		var S = oDate.getSeconds(); 秒
+		
+		setInterval(time,1000);	第一次 起作用的时候有一个时间间隔一秒
+			
+	设置时间对象
+		setFullYear(年)
+		setFullYear(年，月，日)
+		设置的时候 也少设置一个月
+		setHours（小时）
+		setHour(时，分，秒，毫秒)
+
+	var a=iDate.getTime(); 获取毫秒数
+
+
+
+21.字符串的常用发方法
+	charAt（位置）	返回对应位置的字符
+	str.indexOf('要查找的字符') 查找某个字符在字符串中的位置  如果找到了 返回位置 如果
+			没有找到 那么返回-1 
+	lastIndexOf()	从后查找
+	toLowerCase()  小写
+	toUpperCase() 大写	
+	substring(2,4)	abcdedz   -> cd 
+	str.split('-')	字符串 ->数组	str = '2015-12-25';   ->[2015,12,25]
+	charCodeAt (位置)  	返回值指定位置字符的编码 +8
+	String.fromCharCode()   返回对应字符编码的字符
+	
+	检测文件的类型
+	var str='aoisola.avi';
+	substring  lastIndexOf
+	substring(str.lastIndexOf('.')+1);
+
+
+  数组常用方法
+	定义数组的两种方式：
+	var arr = [12,5,8]; 方便 √
+	var arr = new Array(12,5,8);
+
+	arr.push(7)     12,5,8,7	 向后面添加一个或多个元素
+	arr.pop()		 从后面删除一个元素
+	arr.unshift()		 从前面添加一个或多个元素
+	arr.shift()		 从前面删除一个元素
+	arr.reverse()		 数组反转  【1，2，3】变为【3，2，1】
+	arr.sort()		 排序
+		arr.sort(function(n1,n2){
+		
+			return n1-n2;//从小到大的排列
+		
+		});
+	arr.concat(arr2)	 数组连接
+	splice(开始位置，几个，什么元素) 修改元素
+	join('分隔符')		 转字符串
+
+  数组的长度 可以改变length，字符串长度只读
+	
+
+
+22.i的问题
+	循环里面用事件，事件里面不能用i
+       ***  循环里面用定时器，定时器里面不能用i
+   括号的问题
+	事件后面的函数不能加括号
+	定时器里面的函数不能加括号
+
+
+
+23.延迟选项卡
+1）定时器里面的this 有问题不能用，所以定时器外面先存一下this
+2 )移出按钮要清除定时器
+定时器问题
+	1.定时器里面this有问题
+	2.定时器函数加括号
+	3.循环里面用定时器，定时器里面用i
+
+
+24.封闭空间
+	封闭空间 匿名函数自执行
+	前面的小括号里面装的是匿名函数，后面的括号调用、执行
+	var i = 12;
+	；(function(index){
+		alert(index);
+	})(i); 	
+
+		(function(){
+			var oBtn = document.getElementById('btn1');
+			oBtn.onclick = function(){
+				alert(1);
+			}
+		})();
+
+
+25.arguments 传参
+	function sum(){
+		//arguments [12,5,8]
+		var result = 0; 写在for循环外面
+		for(var i = 0;i<arguments.length;i++){
+			result+=arguments[i];
+		}
+		return result;
+	}
+
+	alert(sum(12,5,8));
+
+	return 是出口
+
+26.json
+	定义：
+	var json = {'名字'：变量的值，'名字'：变量的值，'名字'：变量的值};
+	请用json描述下面这句话
+
+	var a=[a,b,c]
+	var json={ 1:a,2:b,3:c }
+	
+	json 和  数组 异同
+
+	相同： 都是用来存储数据
+	不同点
+		数组		json	
+	下标	有		无
+	访问	arr[下标]	名字
+	长度	有		无
+	循环     for		for in
+
+	数组能用for in循环 但是最好不要用 性能低
+
+	var json = {'a':1,'b':2};
+	json.a
+	json['a']			
+	json	arr	
+	length	length
+	for in	for
+	json['a']	arr[1]
+
+	var json = {名字：值};
+	var json = {user:'leo'};
+	细看相当于：var user =  'leo';
+	var fn = function(){}	
+	数组里面可以放json  [{},{}]
+	{ 亲属：[{},{
+	}]}
+	json里面也可以放数组
+	能放 function	
+
+
+
+
+27.检测一个浏览器是不是IE6
+	//window.navigator.userAgent 保存了浏览器的详细信息
+	// '** MSIE 6.0****'没有返回-1说明找到了
+	if(window.navigator.userAgent.indexOf('MSIE 6.0')!=-1){
+		alert('您的浏览器版本过低');
+	}
+ 
+
+28.splice的问题
+	splice的时候长度在变，所以我们光标 位置相当于不动
+	注意：两个都在动，长度在动，光标i也在动，固定其中一个，固定光标不动，让length去动
+	i++和i--对冲掉了 相当于光标没有动
+
+
+
+29.Math常用方法
+	//Math.random(); 0 - 1 随机数
+	//alert(Math.floor(5.9999)); 向下取整
+	//alert(Math.ceil(1.00000001));//向上取整
+	//alert(Math.round(4.4)); 四舍五入
+	//alert(Math.pow(2,3)); //幂 
+	//alert(Math.sqrt(4)); //开方
+	//alert(Math.abs(-99));//绝对值
+	//alert(Math.max(12,5));最大值
+	//alert(Math.min(12,5));最小值
+
+
+30.下拉列表
+	onchange
+	获取选中的值和文本os.options[os.options.selectedIndex].value   text
+	添加一项
+	var opt = new Option(文本，值)
+	os.options.add(opt);
+
+	os.options.remove(i--);//类似splice
+
+
+31.计算一个字符串的字节长度(字节数 谈编码格式)
+fdsafdsafds
+
+K  B M
+1K = 1024B
+utf - 8
+一个字母  字节长度是1
+一个汉字 是3
+在gb2312 下是2个字节
+
+
+32.解决的问题
+1.变量必须加var
+2.不允许 if 里面定义函数，必须顶层定义
+3.严格模式干掉了with
+
+严格模式特性
+1.必须写use strict 不能是其它单词 否则不起作用
+2.use strict 有作用范围 只针对当前函数起作用
+3.只针对 当前自己 script标签起作用
+4.只针对当前js文件起作用
+
+
+
+33.逗号表达式
+，逗号表达式看后面的
+
+alert(12,5)   函数传参
+
+add((12,5))
+
+var a,b,c =5; 后面bc 不能加var
+
+
+34.赋值表达式
+=
+a = 5 是有值的
+
+
+
+
+34.DOM
+获取子节点
+	父级.children()   没有兼容性问题
+	返回一个数组
+	选择的是直接的第一级 儿子
+获取父节点
+	子集.parentNode
+
+获取首尾节点
+	lastChild	首
+	lastElementChild
+	firstChild 低版本IE6 -8	尾
+	firstElementChild 高级浏览器
+
+			低版本IE		FF chrome	
+firstElementChild	undefined		 object		
+firstChild		object			#text		
+
+var oLi = oUl.lastElementChild||oUl.firstChid;
+var oLi = oUl.firstElementChild||oUl.firstChid;
+
+或	
+	或 比较懒，碰到真的就返回  
+
+获取首尾节点
+	用
+	oUl.children[0]首节点
+	oUl.children[length-1] 尾节点
+	这两个无兼容性问题	
+
+
+兄弟节点
+	自己.previousElementSibling||previousSibling 上一个节点
+	自己.nextElementSibling ||nextSibling  下一个节点
+
+
+创建
+	document.createElement(标签)
+	var oLi = document.createElement('li');
+插入
+	父级.appendChild(oLi)  向后添加
+	父级.insertBefore(要添加的元素，添加到谁之前)
+
+
+删除节点：父级.removeChild(要删除元素)
+
+
+上移
+	重点：找到当前的元素和上一个元素
+	父级.insertBefore(D，C)
+	getByClass()
+
+下移
+	重点：找到当前的元素的下一个的下一个元素
+	父级.insertBefore(A，C)
+	C是A的下一个的下一个
+	A.NEXT.NEXT
+	getByClass()
+
+
+
+35.BOM    浏览器对象模型	上一步 下一步 历史记录  各种窗口 浏览器信息
+
+_blank  打开新窗口
+_self	原窗口打开
+
+
+window.open()	
+window.close()
+
+
+26.右下角悬浮框
+	初衷：IE6不支持 fixed所以用js去模拟，但是 高版本没必要这么做直接用fixed更好，因为不抖动
+	
+	实现：
+		通过更改top值
+		top = 滚动距离+可视区距离 - 物体的高度
+	技术：
+		1）事件
+			onload onresize onscroll
+		2) 获取各种距离、高
+			滚动距离：document.documentElement.scrollTop||document.body.scrollTop
+			可视区高：document.documentElement.clientHeight
+			物体的高度：oDiv.offsetHeight;	
+			物体的高度：
+				指的是物体实际的高 = height+padding+border
+		3) 计算top
+			oDiv.style.top  = scrollTop+cH - oH +'px';
+		4)判断浏览器
+			如果IE6 执行js
+			如果高版本 使用 css实现  IE6 兼容写法_下划线
+
+
+
+
+27.DOM属性操作
+.
+[]
+
+自定属性
+访问 自定义属性的时候 	返回undefined
+
+第三种方式
+	getAttribute('自定义属性')  可以用
+	不能混合使用
+	.设置自定义属性				.读取自定义属性
+	oDiv.setAttribute()设置			getAttribute()读取
+
+
+28.BOM
+	window.open	window.close	alert  confirm  prompt
+	winow.navigator   判断浏览器 UA
+	window.location
+	href
+	*search 		?user=blue&age=33
+	*hash		#aaa	
+	protocol
+	geoloaction
+
+
+
+29.物体信息
+offsetTop	到定位父级的顶部的距离
+offsetHeight	  物体高
+scrollHeight	  内容高
+offsetWidth	  物体宽
+offsetLeft	  到定位父级左边的距离
+
+定位父级	offsetParent
+结构父级	parentNode
+
+获取元素在页面中的位置
+
+function getPos(obj){
+	var l = 0;
+	var t = 0;
+	while(obj){
+		l+=obj.offsetLeft;
+		t+=obj.offsetTop;
+		obj = obj.offsetParent;
+	}
+	return {
+		left:l,
+		top:t
+	};
+}
+alert(getPos(oBox).left);
+
+
+30.文字提示
+	onfocus	当得到焦点的时候出发
+	focus() 设置焦点	 
+		百度输入框
+	onblur  当输入框失去焦点的时候触发
+	blur() 设置失去焦点
+		用途：低版本浏览器 虚线问题
+	用span模拟 提示
+
+
+
+31.图片创建的另一种方式
+	图片对象
+	var oImg = new Image();
+	var oDate = new Date();
+	var opt = new Option();
+	var arr = new Array();
+图片加载成功事件
+	onload  加载成功
+	onerror 加载失败
+	核心原理：算进度
+	已经完成/总数
+	进度  = 已经加载的/77图 
+	7/77  = 0.0909090909090909  -> 
+	0.0909090909090909*100  +%   ->9.090909%
+	onload
+	步骤：
+	1.for循环动态加载77张图
+	2.当每一张图加载成功的时候，记数增加1
+	3.用已加载的数量t除以总张数77 然后取整 计算百分比
+	4.将百分比 用于进度条div的宽度
+
+
+
+32.关于表单
+	提交数据
+	action  提交的地址 数据提交到哪里 
+	method	提交方式
+		get		数据量小 32k 方便   利于分享 不安全 get的方式数据在url里面明文串 默认表单的提交方式
+		post		数据量大 1G  没法分享	相对安全
+						
+	name 名字	必须加name
+
+更安全的方式
+https  相对安全
+cache 缓存
+
+
+
+33.事件对象 包含了事件的详细信息 
+比如 点击位置 点击了什么元素了 从什么元素上移入或者移出				
+event	
+	clientX
+	clientY	
+	鼠标在可视区内的位置
+
+	chrome IE	event 对象 没有问题
+	FF		ev
+	兼容性
+	if
+	||
+事件对象
+	各种事件触发的时候的详细信息
+	兼容
+		event		IE chrome
+		ev		FF
+
+	html.parentNode ==document   ->true
+
+	document.onclick = function(){};
+	鼠标的坐标
+		oEvent.clientX   
+		oEvent.clientY
+
+冒泡机制
+	子级元素 一层一层将事件 往父级和父级的父级和父级的父级的父级和...一直到头
+	取消冒泡
+	ev.cancelBubble = true;
+	什么时候出问题什么时候用，没事别瞎瞎取消
+
+
+
+
+
+
+
+34.按键
+	唯一没有键码 PrtsC 系统截屏  系统调用
+	onkeydown  当按键被按下的是 触发
+	onkeyup      当按键 被抬起的时候
+
+
+ctrl+enter 发送
+	oEvent.keyCode == 13&&oEvent.keyCode == 17
+	一个键只能有一个值 不能同时等于 13和17
+
+	布尔值
+	oEvent.ctrlKey		true
+	shiftKey
+	altKey
+	    oEvent.keyCode == 13&&oEvent.ctrlKey
+
+	PS:	&& &&  &&  &&
+
+
+
+35.自定义右键菜单	
+	鼠标右键事件   环境上下文菜单
+	oncontextmenu
+
+期望：右击空白 出来一个自定义的菜单
+1）布局 √
+2）事件  右键事件 √
+	onclick		点击 左键
+	oncontextmenu 右键菜单事件	 
+3）右击获取鼠标的位置 √ 
+4）让模拟的菜单 放到哪个位置 √ clientX
+5） 系统默认的菜单 阻止掉 √ -> *阻止默认事件 return false
+6）菜单的功能
+	window.open
+	重新加载   window.location.reload();
+
+
+
+
+36.拖拽
+	按下鼠标 onmousedown  求 disX = oEvent.clientX - oDiv.offsetLeft
+	拖动鼠标 onmousemove   oDiv.style.left = oEvent.clienX - disX	
+	松开鼠标 onmouseup	  ?????
+
+
+
+37.事件绑定
+	一个按钮做不同的事儿 	
+	元素.attachEvent(事件，函数)      IE6-8
+	元素.addEventListener(事件，函数名，false)	chrome FF
+
+	function addEvent(obj,sEv,fn){		
+		if(obj.addEventListener){
+			obj.addEventListener(sEv,fn,false);
+		}else{
+			obj.attachEvent('on'+sEv,fn);
+		}
+	}	
+	function aaa(){
+		alert(1);
+	}
+	addEvent(oBtn,’click‘,aaa);
+
+
+
+38.滚轮事件 	
+	onmousewheel   chrome IE
+	DOMMouseScroll	FF
+
+	DOM事件   必须绑定 
+
+	兼容性处理
+	
+	if(navigator.userAgent.indexOf('Firefox')!=-1){			//判断是不是火狐浏览器
+		obj.addEventListener('DOMMouseScroll',fnWheel,false);
+	}else{
+		obj.onmousewheel = fnWheel;
+	}
+	
+	判断滚轮滚动方向（需要兼容处理）
+	var oEvent =ev||event;
+	var down = false;
+
+	if(oEvent.wheelDelta){
+
+		down = oEvent.wheelDelta<0?true:false;	//chrome IE
+				
+	}else{
+		
+		down = oEvent.detail<0?false:true;	//FF
+	}
+	
+
+	阻止默认行为
+	preventDefault&&preventDefault()
+	return false;
+	
+
+
+
+39.字数统计、
+
+技术实现：
+1.布局 
+2.window.onload 获取元素
+3.加事件
+
+	onkeydown 的时候输入没有进去
+	onkeyup   的时候 不行 一直按住 不触发
+	oninput   IE6-8 有问题
+
+	IE
+	onpropertychange
+
+	oninput onpropertychange  都不兼容IE9
+
+	用定时器 （获取焦点开定时器、失去焦点关闭定时器）
+	如果想单独针对IE9做些操作，ua检测	
+
+
+
+
+40.cookie
+	用途：1.自动登录 2.记住用户名 3.拖拽记住位置 4广告 和用户行为跟踪
+	例如：http://www.jb51.net/article/25017.htm
+
+	使用cookie必须使用服务器访问方式 本地网页访问方式无法使用
+cookie 特点
+1.以域名为单位——域名
+	同一域名下所有页面共享一套cookie
+2.cookie大小有限——非常小(4K)
+	出现的太早了
+3.非常不安全
+	对用户不安全——任何人都能看见
+	对网站不安全——几乎稍微懂点JS，就能修改
+		*cookie里面的数据不要信任
+4.有时间限制——有效期
+	
+	关于收费域名和服务器 
+	作用1.跑cookie和ajax 
+	       2.个人站
+
+	域名：网址：如www.baidu.com 用来访问服务器上的代码
+		注册：国内万网   国外 godaddy 
+		          费用便宜需备案 （20个工作日）  国外的省事不需要备案
+	服务器：
+		https://list.tmall.com/search_product.htm?spm=a220m.1000858.1000724.5.cGEL2z&cat=56426035&brand=31140&q=%B7%FE%CE%F1%C6%F7%D6%F7%BB%FA&sort=pd&style=g&search_condition=4&from=sn_1_cat-qp&industryCatId=56426035&tmhkmain=0#J_Filter
+		服务器就是一台高配置的电脑，很贵很贵很贵
+
+		阿里云   www.aliyun.com
+		ucloud https://www.ucloud.cn/
+		国外
+			bluehost 
+
+
+
+
+41.页面加载事件完成
+	window.onload    	
+	所有的东西全部加载完成 在触发onload
+	
+	ready事件
+	html+css加载完触发 更灵敏，尤其是多图片的情况   
+	
+	总结： ready 
+	ready事件 通俗的叫法
+	window.ready onready
+	DOMContentLoaded
+	ready >onload>window.onload
+
+	DOMContentLoaded  addEventListener   FF chrome 高级浏览
+	onreadystatechange  		     IE6-IE8	
+	onreadystatechange  attachEvent  弹两次 
+	
+	兼容处理
+
+	DOMContentLoaded  addEventListener   FF chrome 高级浏览
+	onreadystatechange  IE6-IE8	
+	
+	function fn(){
+		alert('ready');	
+	}
+	
+	if(document.addEventListener){
+		document.addEventListener('DOMContentLoaded',fn,false);		//FF chrome
+	}else{
+		
+		document.attachEvent('onreadystatechange',function(){		//ie6-8	
+			if(document.readyState == 'complete' ){
+				fn();
+			}
+		});
+	}
+
+
+
+42.事件委托（事件代理）
+	事件冒泡
+	
+	循环加事件
+	1.给子元素加事件 慢
+	2.占资源
+	不给 每一个子元素加事件，给父级统一加事件 
+	会发生冒泡
+	srcElement 谁触发了这个事件的元素
+	
+	事件委托方式
+	1.更快 2.更省资源
+	总结：
+	事件委托：利用冒泡 一级一级上传，不给每一个子元素加事件，而是统一给
+	父级元素加事件，集中处理，然后寻找事件源
+	IE chrome	srcElement
+	FF		target
+
+	总结：
+	原理：子级上的事件，会冒泡到父级
+	做法：在父级加事件，相当于给所有子级加
+	对象：如何知道哪个子级发生事件
+	chrome、IE：srcElement
+	FF：target	
+
+	window.onload = function(){
+		var oUl = document.getElementById('ul1');
+		oUl.onclick = function(ev){
+			var oEvent = ev||event;
+			
+			var oSrc = oEvent.srcElement||oEvent.target;
+			//alert(1);	
+			//alert(event.srcElement);
+			oSrc.style.background = 'red';
+		};
+	};
+
+
+拉钩 猎聘 100offer 周伯通 boss直招

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+</style>
+<script>
+	window.onload = function(){
+		var oM = document.getElementById('minus');	
+		var oP = document.getElementById('plus');
+		var oNum = document.getElementById('num');	
+		var timer = null;
+		//加法
+		oP.onclick = function(){
+			var iNum = parseFloat(oNum.value);
+			if(iNum<0){
+				iNum = 0;
+			}
+			iNum++;
+			oNum.value = iNum;	
+		};
+		oP.onmousedown = function(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var iNum = parseFloat(oNum.value);
+				if(iNum<0){
+					iNum = 0;
+				}
+				iNum++;
+				oNum.value = iNum;	
+			},300);
+		};
+		oP.onmouseup = function(){
+			
+			clearInterval(timer);	
+		};
+		
+		oM.onclick = function(){
+			var iNum = parseFloat(oNum.value);
+			iNum--;
+			if(iNum<0){
+				iNum = 0;
+			}
+			oNum.value = iNum;	
+		};
+		oM.onmousedown = function(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var iNum = parseFloat(oNum.value);
+				iNum--;
+				if(iNum<0){
+					iNum = 0;
+				}
+				oNum.value = iNum;	
+			},300);
+		};
+		
+		oM.onmouseup = function(){
+			
+			clearInterval(timer);	
+		};
+		
+		
+	};
+</script>
+</head>
+<body>
+<input type="button" value="-" id="minus">	
+<input type="text" value="0" id="num">
+<input type="button" value="+" id="plus">	
+</body>
+</html>
+
+
+
+
+

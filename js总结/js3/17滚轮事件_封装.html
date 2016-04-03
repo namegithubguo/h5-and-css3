@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	#div1{width:200px;height:200px; background:#ccc; position:absolute;left:20px; top:50px;}
+	body{height:3000px;}
+</style>
+<script src="mousewheel.js"></script>
+<script>
+	window.onload = function(){
+		var oDiv = document.getElementById('div1');
+		addWheel(oDiv,function(down){
+			if(down){
+				oDiv.style.height = oDiv.offsetHeight+10+'px';
+			}else{
+				oDiv.style.height = oDiv.offsetHeight-10+'px';
+			}
+		});
+	};
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

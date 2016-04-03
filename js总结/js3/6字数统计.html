@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	#s{color:red;}
+	#txta{width:600px;height:200px; display:block;}
+</style>
+<script>
+	window.onload = function(){
+		var oS = document.getElementById('s');	
+		var oTxta = document.getElementById('txta');
+		//加事件
+		oTxta.onpropertychange = oTxta.oninput = function(){
+			//alert(oTxta.value);
+			oS.innerHTML = oTxta.value.length;	
+		};	
+/*		oTxta.onpropertychange = function(){
+			//alert(oTxta.value);
+			document.title = oTxta.value.length;
+			//oS.innerHTML = oTxta.value.length;	
+		};	*/
+	};
+</script>
+</head>
+<body>
+	已经输入了<span id="s">35</span>个字
+    <textarea id="txta"></textarea>
+</body>
+</html>

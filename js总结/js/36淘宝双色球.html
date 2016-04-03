@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	span{ width:50px; height:50px; float:left; line-height:50px; color:#fff; background:red; border-radius:50%; text-align:center;margin:10px; font-weight:bold; }
+	input{margin:20px; padding:10px 30px;}
+</style>
+<script>
+	
+	window.onload = function(){
+		var aS = document.getElementsByTagName('span');
+		var oBtn = document.getElementById('btn');
+		
+		oBtn.onclick = lottery;
+
+		function lottery(){
+			var arr = [];
+			//从m到n的随机整数
+			function rnd(m,n){
+				return parseInt(m+Math.random()*(n-m));	
+			}
+			function findInArr(num,arr){
+				for(var i = 0;i<arr.length;i++){
+					if(num == arr[i]){
+						return true;
+					}
+				}
+				return false;
+			}
+			
+			function toDou(n){
+				return n<10?'0'+n:''+n;
+			}
+		
+			while(arr.length<7){
+				var iNum = rnd(1,34);
+				//数组里面有没有这个数
+				if(findInArr(iNum,arr) == false){
+					arr.push(iNum);
+				}
+			}
+			
+			
+			for(var i = 0;i<aS.length;i++){
+				aS[i].innerHTML = toDou(arr[i]); 
+			}
+		}	
+		
+		lottery();	
+	};
+</script>
+</head>
+<body>
+	<div id="box">
+    	<span>11</span>
+    	<span>11</span>
+    	<span>11</span>
+    	<span>11</span>
+    	<span>11</span>
+    	<span>11</span>
+    	<span>11</span>
+        <input type="button" value="换一注" id="btn">
+    </div>
+</body>
+</html>

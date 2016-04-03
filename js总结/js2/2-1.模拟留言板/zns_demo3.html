@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<title>模拟留言板 - 智能课堂课堂 - www.zhinengshe.com</title>
+<link href="zns_style.css" rel="stylesheet" type="text/css" />
+<script>
+	window.onload = function(){
+		var oBtn = document.getElementById('btn');
+		var oBox = document.getElementById('box');
+		var oTxt = document.getElementById('text');
+		var count = 0;
+		oBtn.onclick = function(){
+			if(oTxt.value == ''){
+				alert('请输入内容');
+				return;
+			}
+			if(oBox.innerHTML == '<em>这里会显示留言内容……</em>'){
+				oBox.innerHTML = '';
+			}
+			count++;
+			var oP = document.createElement('p');
+			oP.innerHTML =count+'.'+ oTxt.value;
+			oBox.appendChild(oP);
+			oTxt.value = '';
+			//等你插入以后我再操作
+			oP.onmouseover = function(){
+				this.style.background = 'yellow';
+				var oS = document.createElement('span');
+				oS.innerHTML = '您确定要删除<strong>'+this.innerHTML+'</strong>吗';
+				oP.appendChild(oS);
+			};
+			
+			oP.onmouseout = function(){
+				this.style.background = '#f1f1f1';
+				//问题找不到 因为是局部变量
+				//this.removeChild(oS);
+				this.removeChild(this.children[0]);	
+				
+			};
+			
+			oP.onclick = function(){
+				oBox.removeChild(this);	
+				if(oBox.innerHTML == ''){
+					oBox.innerHTML = '<em>这里会显示留言内容……</em>';
+				}
+			};
+		};	
+		
+		
+		
+	};
+</script>
+</head>
+
+<body>
+
+<div id="parent">
+	<h4>留言内容：</h4>
+	<div id="box"><em>这里会显示留言内容……</em></div>
+	<textarea id="text"></textarea><br />
+	<input id="btn" type="button"  value="发表留言" />
+</div>
+
+</body>
+</html>

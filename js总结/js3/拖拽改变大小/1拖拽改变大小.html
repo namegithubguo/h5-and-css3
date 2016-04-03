@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	*{margin:0;padding:0;}
+	#div1{ width:400px;height:300px; top:100px;left:200px; background:red; position:absolute;}
+	#div2{width:30px;height:30px; background:#ccc; position:absolute; right:0;bottom:0;}
+</style>
+<script>
+	window.onload = function(){
+		var oDiv1 = document.getElementById('div1');	
+		var oDiv2 = document.getElementById('div2');
+		oDiv2.onmousedown = function(ev){
+			var oEvent = ev||event;
+			//1.获取div1.w
+			var downWidth = oDiv1.offsetWidth;
+			//鼠标按下的点
+			var  downX = oEvent.clientX;
+			document.onmousemove = function(ev){
+				var oEvent = ev||event;
+				
+				//要改变的是oDiv1宽度
+				//原来的宽+鼠标移动的距离
+				oDiv1.style.width =downWidth + oEvent.clientX -downX+ 'px';
+			};
+			
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+			
+			return false;
+			  
+		};	
+	};
+</script>
+</head>
+<body>
+	<div id="div1">
+    	<div id="div2"></div>
+    </div>
+</body>
+</html>

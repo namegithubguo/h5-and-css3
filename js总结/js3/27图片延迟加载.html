@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	*{margin:0;padding:0;}
+	img{width:310px;height:310px;}
+</style>
+<script>
+	window.onload = window.onscroll =window.onresize = function(){
+		var aImg = document.getElementsByTagName('img');
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+		var cH = document.documentElement.clientHeight;
+		var scrollBottom = scrollTop +cH;
+		for(var i = 0;i<aImg.length;i++){
+			if(aImg[i].offsetTop < scrollBottom){
+				//自定义属性 用getAttribute
+				aImg[i].src = aImg[i].getAttribute('_src');
+			}
+		}
+	};
+</script>
+</head>
+<body>
+	<img _src="img/m1.jpg">
+	<img _src="img/m2.jpg">
+	<img _src="img/m3.jpg">
+	<img _src="img/m4.jpg">
+	<img _src="img/m5.jpg">
+	<img _src="img/m6.jpg">
+	<img _src="img/m7.jpg">
+	<img _src="img/m8.jpg">
+	<img _src="img/m9.jpg">
+	<img _src="img/m10.jpg">
+</body>
+</html>

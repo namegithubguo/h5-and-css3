@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	*{margin:0;padding:0;}
+	li{ list-style:none;}
+	#ul1 li{width:100px;height:100px; background:#ccc; float:left;margin:10px;}
+</style>
+<script>
+	window.onload = function(){
+		var oUl = document.getElementById('ul1');
+		oUl.onclick = function(ev){
+			var oEvent = ev||event;
+			
+			var oSrc = oEvent.srcElement||oEvent.target;
+			//alert(1);	
+			//alert(event.srcElement);
+			oSrc.style.background = 'red';
+		};
+	};
+</script>
+</head>
+<body>
+	<ul id="ul1">
+    	<li></li>
+    	<li></li>
+    	<li></li>
+    	<li></li>
+    	<li></li>
+    </ul>
+</body>
+</html>
+
+
+
+
+
+
+
+

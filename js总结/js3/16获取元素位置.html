@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	*{margin:0;padding:0;}
+	#div1{width:500px;height:300px; background:#ccc;left:100px;top:100px; position:absolute;}
+	#div2{ width:100px;height:100px; position:absolute;left:50px; top:50px; background:red;}
+</style>
+<script>
+	window.onload = function(){
+		var oDiv2 = document.getElementById('div2');
+		function getPos(obj){
+			var l = 0;//left
+			var t = 0;//top
+			while(obj){
+				l+=obj.offsetLeft;//50+100
+				t+=obj.offsetTop;
+				obj = obj.offsetParent;
+			};
+			return {
+				left:l,
+				top:t
+			};
+		}
+		alert(getPos(oDiv2).left);//
+	};
+</script>
+</head>
+<body>
+	<div id="div1">
+    	<div id="div2"></div>
+    </div>
+</body>
+</html>

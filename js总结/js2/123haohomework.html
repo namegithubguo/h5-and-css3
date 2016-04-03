@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	#addWin{ display:none;width:300px;height:300px; background:#ccc; position:absolute;margin-top:-150px;margin-left:-150px; left:50%; top:50%;}
+	input{ padding:5px; height:28px; line-height:28px;margin-top:10px;}
+</style>
+<script>
+	window.onload = function(){
+		var oBtn1 = document.getElementById('btn1');
+		var oUl1 = document.getElementById('ul1');
+		var oUl2 = document.getElementById('ul2');
+		var oA = document.getElementById('add');
+		var oWin = document.getElementById('addWin');
+		var oC = document.getElementById('close');
+		var oName = document.getElementById('name');
+		var oUrl = document.getElementById('url');
+		oBtn1.onclick = function(){
+			oWin.style.display = 'block';
+		};	
+		oC.onclick = function(){
+			oWin.style.display = 'none';
+		};
+		oA.onclick = function(){
+			///oName.value  连接的名字
+			//oUrl.value	连接的地址
+			var oLi = document.createElement('li');
+
+			oLi.innerHTML = '<a href="'+oUrl.value+'">'+oName.value+'</a>';
+			oUl1.appendChild(oLi);
+			var oLi = document.createElement('li'); 
+			oLi.innerHTML = '<span>'+oName.value+'</span><a href="javascript:;">删除</a>';
+			console.log(oLi);
+			oUl2.appendChild(oLi);
+			//?????
+			oLi.children[1].onclick = function(){
+				
+				oUl2.removeChild(this.parentNode);
+				for(var i = 0;i<oUl1.children.length;i++){
+					//弹窗的网址名称 等于 页面里的网址的名称 把页面里面的删除
+					if(this.parentNode.children[0].innerHTML == oUl1.children[i].children[0].innerHTML){
+						oUl1.removeChild(oUl1.children[i]);	
+						
+					}
+				}	
+				
+			};
+		};	
+	};
+</script>
+</head>
+<body>
+	<input type="button" value="添加网址" id ="btn1">
+    <ul id="ul1">
+    </ul>
+    <div id="addWin">
+    	名称：<input type="text" id="name"><a href="javascript:;" id="close">关闭</a><br>
+    	网址：<input type="text" id="url">
+        <input type="button" value="添加" id="add">
+        <ul id="ul2">
+        </ul>
+
+    
+    </div>
+</body>
+</html>

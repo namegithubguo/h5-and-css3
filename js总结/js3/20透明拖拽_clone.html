@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+	.div1{width:100px;height:100px; background:red; position:absolute; left:0; top:0;}
+	/*#js
+	.css*/
+</style>
+<script>
+	window.onload = function(){
+		var oDiv = document.getElementById('div1');
+		oDiv.onmousedown = function(ev){
+			//1创建一个半透明 div
+			
+			var oNewDiv = oDiv.cloneNode(true);
+			oNewDiv.removeAttribute('id');
+			oNewDiv.style.opacity = 0.6;
+			oDiv.parentNode.appendChild(oNewDiv);
+			//存距离
+			var oEvent = ev||event;
+			var disX = oEvent.clientX - oDiv.offsetLeft;
+			var disY = oEvent.clientY - oDiv.offsetTop;	
+			
+			document.onmousemove  = function(ev){
+				var oEvent = ev||event;
+				oNewDiv.style.left = oEvent.clientX - disX +'px';	
+				oNewDiv.style.top = oEvent.clientY - disY +'px';	
+			};
+			
+			document.onmouseup = function(){
+				oDiv.style.left = oNewDiv.offsetLeft +'px';
+				oDiv.style.top = oNewDiv.offsetTop +'px';
+				oDiv.parentNode.removeChild(oNewDiv);
+				document.onmouseup = null;
+				document.onmousemove = null;
+				oDiv.releaseCapture&&oDiv.releaseCapture(); 	
+			};
+			oDiv.setCapture&&oDiv.setCapture();
+			return false;
+		};	
+		
+	};
+</script>
+</head>
+<body>
+	<div id="div1" class="div1">哥是一个传说</div>
+</body>
+</html>
+
+
+
+
+
+
