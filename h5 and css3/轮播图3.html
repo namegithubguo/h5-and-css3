@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<style>
+*{margin:0; padding:0; list-style:none;}
+html{font-size:20px;}
+.box{width:16rem; height:8rem; position:relative; top:0; left:0; overflow:hidden;}
+.box ul{width:64rem; height:8rem;position:absolute; top:0; left:0;}
+.box ul li{width:16rem; height:8rem; float:left; text-align:center; line-height:8rem; font-size:2rem; font-weight:bold; font-family:微软雅黑; color:#fff;}
+</style>
+<script>
+(function(win,doc){
+	win.onload=win.onresize=function(){
+		doc.documentElement.style.fontSize = doc.documentElement.clientWidth*20/320+'px';
+	};
+})(window,document);
+document.addEventListener('DOMContentLoaded',function(){
+	var oBox = document.querySelector('.box');
+	var oUl = document.querySelector('.box ul');
+	var aLi = document.querySelectorAll('.box ul li');
+	
+	var x = 0; 		//取代translate
+	var changeSize = 50;
+	var iNow = 0;
+	oUl.addEventListener('touchstart',function(ev){
+		oUl.style.WebkitTransition = 'none';
+		var downX = ev.targetTouches[0].pageX;
+		var disX = downX-x;
+		function fnMove(ev){
+			x =(ev.targetTouches[0].pageX-disX);
+			oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';
+		}
+		function fnEnd(ev){
+			document.removeEventListener('touchmove',fnMove,false);
+			document.removeEventListener('touchend',fnEnd,false);
+			var upX = ev.changedTouches[0].pageX;
+			
+			oUl.style.WebkitTransition = '.4s all ease';
+			
+			if(Math.abs(upX-downX)>=changeSize){
+				//动
+				if(upX<downX){
+					//下一张
+					iNow++;
+					iNow==aLi.length&&(iNow=aLi.length-1);
+				}else{
+					//上一张
+					iNow--;
+					iNow<0&&(iNow=0);
+				}
+				x = -iNow*aLi[0].offsetWidth;
+				oUl.style.WebkitTransform = 'translate3d('+x+'px,0,0)';
+			}else{
+				//不动
+				x = -iNow*aLi[0].offsetWidth;
+				oUl.style.WebkitTransform = 'translate3d('+x+'px,0,0)';
+			}
+			
+			
+		}
+		document.addEventListener('touchmove',fnMove,false);
+		document.addEventListener('touchend',fnEnd,false);
+	},false);
+},false);
+</script>
+</head>
+
+<body>
+<div class="box">
+	<ul>
+		<li style="background:#f90;">0</li>
+		<li style="background:#399;">1</li>
+		<li style="background:#993;">2</li>
+		<li style="background:#09f;">3</li>
+	</ul>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

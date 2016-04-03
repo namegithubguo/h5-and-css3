@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<style>
+ul{width:200px;}
+li.on{background:url(play.gif) no-repeat right center; padding-right:20px;}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var aMp3 = ['千千阙歌','时间都去哪儿了','小苹果','夜的钢琴曲','雨的印记'];
+	var oBtn = document.getElementById('btn1');
+	var oA = new Audio();
+	var iNow = 0;
+	tab();
+	function tab(){
+		oA.src='mp3/'+aMp3[iNow]+'.mp3';
+		oA.play();
+	}
+	oA.onended=function(){
+		iNow++;
+		if(iNow==aMp3.length)iNow=0;
+		tab();
+	}
+	var bOk = true;
+	oBtn.onclick=function(){
+		if(bOk)
+			oA.volume = 0;
+		else
+			oA.volume = 1;
+		bOk = !bOk;
+	};
+},false);
+</script>
+</head>
+
+<body>
+<input type="button" value="静音" id="btn1" />
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
